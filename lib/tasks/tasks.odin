@@ -7,7 +7,7 @@ import "core:os"
 import "version"
 
 Options :: struct {
-	version: bool `args:"pos=1,name=version" usage:"Prints the current version of Gungnir"`,
+	version: bool `args:"pos=1,name=version" usage:"Prints the current version."`,
 }
 
 parse_system_args :: proc() -> Options {
