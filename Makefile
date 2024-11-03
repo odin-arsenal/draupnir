@@ -1,4 +1,4 @@
-.PHONY: build.project build.lib release version hooks lint
+.PHONY: build.project build.lib build.release version hooks lint
 
 make build b:
 	@rm -rf _build
@@ -8,18 +8,16 @@ make build b:
 
 build.project bp:
 	@mkdir -p _build
-	@odin build project.odin -file -out:_build/project
+	@odin build project.odin -debug -file -out:_build/project
 
 build.lib bl:
 	@mkdir -p _build
-	@odin build lib/ -out:_build/lib
+	@odin build lib/ -debug -out:_build/lib
 
-release r:
+build.release release r br:
 	@rm -rf dist
 	@mkdir -p dist
-	@make build.lib
-	@cp _build/lib dist/
-
+	@odin build lib/ -out:dist/lib
 
 hooks h:
 	@make -f .hooks/Makefile
