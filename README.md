@@ -23,6 +23,20 @@ Use this template as a base to create your own [Odin Projects](https://odin-lang
 - `.version`: A number indicating the current version (for CI purposes).
 - `run`: A bash script to run the `lib` executable.
 - `project`: A bash script to run the `project` executable.
+- `_build`: hidden directory for storing project build files
+- `dist`: hidden directory for storing release builds.
+- `.hooks`: store git hooks for linting and formatting odin projects.
+
+## Makefile
+
+The project provides a _Makefile_ to ease commands:
+
+- `make docs`: Generates documentation using `Gungnir`.
+- `make build.project`: Builds the `project.odin` file
+- `make build.lib`: Builds the `lib` package.
+- `make release`: Builds the `lib` package and store it in `dist`.
+- `make version`: Builds the `lib` package and runs the `--version` command.
+- `make hooks`: Install hooks to `.git` directory.
 
 ## License
 
