@@ -8,16 +8,16 @@ make build b:
 
 build.project bp:
 	@mkdir -p _build
-	@odin build project.odin -debug -file -out:_build/project
+	@odin build project.odin -collection:config=config/ -collection:deps=deps/ -debug -file -out:_build/project
 
 build.lib bl:
 	@mkdir -p _build
-	@odin build lib/ -debug -out:_build/lib
+	@odin build lib/ -collection:config=config/ -collection:deps=deps/ -debug -out:_build/lib
 
 build.release release r br:
 	@rm -rf dist
 	@mkdir -p dist
-	@odin build lib/ -out:dist/lib
+	@odin build lib/ -collection:config=config/ -collection:deps=deps/ -out:dist/lib
 
 hooks h:
 	@make -f .hooks/Makefile
