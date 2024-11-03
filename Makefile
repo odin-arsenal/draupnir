@@ -1,4 +1,4 @@
-.PHONY: build.project build.lib release version hooks
+.PHONY: build.project build.lib release version hooks lint
 
 make build b:
 	@rm -rf _build
@@ -23,6 +23,9 @@ release r:
 
 hooks h:
 	@make -f .hooks/Makefile
+
+lint l:
+	@odin strip-semicolon . && odin check .
 
 version v:
 	@./run --version
