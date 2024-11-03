@@ -26,6 +26,9 @@ Use this template as a base to create your own [Odin Projects](https://odin-lang
 - `_build`: hidden directory for storing project build files
 - `dist`: hidden directory for storing release builds.
 - `.hooks`: store git hooks for linting and formatting odin projects.
+- `config`: Stores configuration settings for different environments: dev, prod, runtime, test.
+- `resources`: Stores different static assets like images or scripts needed for the application.
+- `priv/documentation`: A `Gungnir` directory to store the amalgamated documentation before `mdbook` compilation.
 
 ## Makefile
 
