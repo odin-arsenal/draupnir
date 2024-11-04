@@ -8,7 +8,7 @@
 # a specific format. It's called Taskfile, sits in the root of your project
 # (alongside your other project files) and contains the tasks to run your project.
 #
-# Example: ./run build:debug
+# Example: ./run build.debug
 #
 
 # Enables easier access to common directories
@@ -16,7 +16,7 @@
 COLLECTIONS="-collection:project=."
 
 function test {
-	priv/scripts/test ${COLLECTIONS}
+	odin test test/ -define:env=test -all-packages $@ ${COLLECTIONS}
 }
 
 # Builds docs using Gungnir
@@ -32,32 +32,36 @@ function deps.get {
 # debug build for LLDB usage
 function build.debug {
 	mkdir -p _build
-	priv/scripts/format ${COLLECTIONS}
-	priv/scripts/build-debug ${COLLECTIONS}
+	odin strip-semicolon . $@ ${COLLECTIONS}
+	odin check . $@ ${COLLECTIONS}
+	odin build lib/ -define:env=dev -strict-style -debug -out:_build/lib $@ ${COLLECTIONS}
 }
 
 # builds project.odin file
 function build.project {
 	mkdir -p _build
-	priv/scripts/format ${COLLECTIONS}
-	priv/scripts/build-project ${COLLECTIONS}
+	odin strip-semicolon . $@ ${COLLECTIONS}
+	odin check . $@ ${COLLECTIONS}
+	odin build project.odin -define:env=dev -strict-style -debug -file -out:_build/project $@ ${COLLECTIONS}
 }
 
 # builds debug and project.odin
 function build.all {
 	rm -rf _build
 	mkdir -p _build
-	priv/scripts/format ${COLLECTIONS}
-	priv/scripts/build-debug ${COLLECTIONS}
-	priv/scripts/build-project ${COLLECTIONS}
+	odin strip-semicolon . $@ ${COLLECTIONS}
+	odin check . $@ ${COLLECTIONS}
+	odin build lib/ -define:env=dev -strict-style -debug -out:_build/lib $@
+	odin build project.odin -define:env=dev -strict-style -debug -file -out:_build/project $@ ${COLLECTIONS}
 }
 
 # Release build without debug symbols
 function build.release {
 	rm -rf dist
 	mkdir -p dist
-	priv/scripts/format ${COLLECTIONS}
-	priv/scripts/build-release ${COLLECTIONS}
+	odin strip-semicolon . $@ ${COLLECTIONS}
+	odin check . $@ ${COLLECTIONS}
+	odin build lib/ -define:env=prod -warnings-as-errors -strict-style -out:dist/lib ${COLLECTIONS}
 }
 
 # Runs the project binary
@@ -79,19 +83,14 @@ function lib {
 # Formats the project with odin
 # Ensure to update the collection inside hooks if more are added later
 function format {
-	priv/scripts/format ${COLLECTIONS}
+	odin strip-semicolon . $@ ${COLLECTIONS}
+	odin check . $@ ${COLLECTIONS}
 }
 
 # install format and lint hooks to git
 function hooks {
 	cp .hooks/pre-commit .git/hooks
 	cp -r .hooks/pre-commit.d .git/hooks
-}
-
-# Test the program with the version command
-function version {
-	./run build:debug
-	_build/lib --version $@
 }
 
 # prints help
@@ -106,6 +105,6 @@ function default {
     help
 }
 
-TIMEFORMAT=""
 #TIMEFORMAT="Task completed in %3lR"
+TIMEFORMAT=""
 time ${@:-default}
