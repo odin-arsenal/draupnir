@@ -104,10 +104,16 @@ import "core:fmt"
 import "project:config"
 import "../options"
 
-run:: proc(args: options.Options) {
+run :: proc(args: options.Options) {
 	fmt.printfln("%s\n%s\n%s", config.COPYRIGHT, config.AUTHORS, config.WEBSITE)
 }
 ```
+
+## Main Files: project.odin and lib/lib.odin
+
+- `project.odin`: This file is used for commands or other project related procedures. By default is an alias of `lib/lib.odin` main procedure. But can be modified as a special build, different from `lib.odin`. Is used mainly to identify the directory as an `odin` project.
+
+- `lib/lib.odin`: This file is were the main application code is stored, contains its own main procedure.
 
 ## License
 
