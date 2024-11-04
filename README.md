@@ -21,8 +21,7 @@ Use this template as a base to create your own [Odin Projects](https://odin-lang
 - `SUMMARY.md`: A file used in `Gungnir` to generate a menu.
 - `.tool-versions`: `asdf-vm` version declaration of tools for this project.
 - `.version`: A number indicating the current version (for CI purposes).
-- `run`: A bash script to run the `lib` executable.
-- `project`: A bash script to run the `project` executable.
+- `run`: A bash script to run the commands.
 - `_build`: hidden directory for storing project build files
 - `dist`: hidden directory for storing release builds.
 - `.hooks`: store git hooks for linting and formatting odin projects.
@@ -35,15 +34,17 @@ Use this template as a base to create your own [Odin Projects](https://odin-lang
 
 The project provides a [_./run_](run) script to ease commands:
 
-- `./run build:project`: Builds the `project.odin` file
-- `./run build:debug`: Builds the `lib` package.
-- `./run build:release`: Builds the `lib` package and store it in `dist`.
+- `./run build.project`: Builds the `project.odin` file
+- `./run build.debug`: Builds the `lib` package.
+- `./run build.release`: Builds the `lib` package and store it in `dist`.
 - `./run project`: Runs the `project` binary. You can pass arguments.
 - `./run lib`: Runs the `lib` binary. You can pass arguments.
 - `./run version`: Builds the `lib` package and runs the `--version` command.
 - `./run hooks`: Install hooks to `.git` directory.
 - `./run format`: Runs format and lint in the codebase.
 - `./run docs`: Generates documentation using `Gungnir`.
+- `./run deps.get`: Downloads git submodules inside `deps`.
+- `./run docs`: Builds `Gungnir` docs.
 
 ## Tasks
 

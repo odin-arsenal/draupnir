@@ -15,26 +15,32 @@
 # Usage: import "project:config"
 COLLECTIONS="-collection:project=."
 
+# Builds docs using Gungnir
 function docs {
 	echo "TODO"
 }
 
+# Init git submodules inside deps
+function deps.get {
+	echo "TODO"
+}
+
 # debug build for LLDB usage
-function build:debug {
+function build.debug {
 	mkdir -p _build
 	priv/scripts/format ${COLLECTIONS}
 	priv/scripts/build-debug ${COLLECTIONS}
 }
 
 # builds project.odin file
-function build:project {
+function build.project {
 	mkdir -p _build
 	priv/scripts/format ${COLLECTIONS}
 	priv/scripts/build-project ${COLLECTIONS}
 }
 
 # builds debug and project.odin
-function build:all {
+function build.all {
 	rm -rf _build
 	mkdir -p _build
 	priv/scripts/format ${COLLECTIONS}
@@ -43,7 +49,7 @@ function build:all {
 }
 
 # Release build without debug symbols
-function build:release {
+function build.release {
 	rm -rf dist
 	mkdir -p dist
 	priv/scripts/format ${COLLECTIONS}
