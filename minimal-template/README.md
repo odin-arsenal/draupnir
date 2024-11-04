@@ -33,3 +33,39 @@ The project provides a [_./run_](run) script to ease commands:
 ## Docs
 
 Documentation can be generated with [Gungnir](https://github.com/odin-arsenal/gungnir).
+
+## Project Collection
+
+In order to simplify the structure a collection is passed down to odin called `project`
+that points to the root directory.
+
+**Before**
+
+```odin
+import "../../../config"
+```
+
+**After**
+
+```odin
+import "project:config"
+```
+
+## Main Files: project.odin and lib/lib.odin
+
+- `project.odin`: This file is used for commands or other project related procedures. By default is an alias of `lib/lib.odin` main procedure. But can be modified as a special build, different from `lib.odin`. Is used mainly to identify the directory as an `odin` project.
+
+- `lib/lib.odin`: This file is were the main application code is stored, contains its own main procedure.
+
+## License
+
+- BSD-3
+
+## Credits
+
+<p>
+  Made with <i class="fa fa-heart">&#9829;</i> by
+  <a href="https://ninjas.cl">
+    Ninjas.cl
+  </a>.
+</p>
