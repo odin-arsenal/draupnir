@@ -7,7 +7,7 @@ In the same spirit, this project adds to Odin's wealth and power by scaffolding 
 
 ## Odin's Arsenal
 
-This project is part of the [Odin's Arsenal Project](https://github.com/odin-arsenal/draupnir)
+This project is part of the [Odin's Arsenal](https://github.com/odin-arsenal/draupnir).
 
 ## Usage
 

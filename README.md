@@ -4,6 +4,10 @@
 
 In the same spirit, this project adds to Odin's wealth and power by scaffolding `Odin` projects.
 
+## Odin's Arsenal
+
+This project is part of the [Odin's Arsenal](https://github.com/odin-arsenal/draupnir).
+
 ## Full Template
 
 - [Complete scaffold](full-template)
