@@ -22,14 +22,14 @@ function docs {
 # debug build for LLDB usage
 function build:debug {
 	mkdir -p _build
-	priv/scripts/format
+	priv/scripts/format ${COLLECTIONS}
 	priv/scripts/build-debug ${COLLECTIONS}
 }
 
 # builds project.odin file
 function build:project {
 	mkdir -p _build
-	priv/scripts/format
+	priv/scripts/format ${COLLECTIONS}
 	priv/scripts/build-project ${COLLECTIONS}
 }
 
@@ -37,8 +37,8 @@ function build:project {
 function build:all {
 	rm -rf _build
 	mkdir -p _build
-	priv/scripts/format
-	priv/scripts/build-debug
+	priv/scripts/format ${COLLECTIONS}
+	priv/scripts/build-debug ${COLLECTIONS}
 	priv/scripts/build-project ${COLLECTIONS}
 }
 
@@ -46,8 +46,8 @@ function build:all {
 function build:release {
 	rm -rf dist
 	mkdir -p dist
-	priv/scripts/format
-	priv/scripts/build-release
+	priv/scripts/format ${COLLECTIONS}
+	priv/scripts/build-release ${COLLECTIONS}
 }
 
 # Runs the project binary

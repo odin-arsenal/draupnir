@@ -4,27 +4,24 @@ import "core:fmt"
 import "core:flags"
 import "core:os"
 
+// Tasks
+import "options"
 import "version"
 
-Options :: struct {
-	version: bool `args:"pos=1,name=version" usage:"Prints the current version."`,
+parse_system_args :: proc() -> options.Options {
+	args: options.Options
+	flags.parse_or_exit(&args, os.args, .Unix)
+	return args
 }
 
-parse_system_args :: proc() -> Options {
-	opt: Options
-
-	flags.parse_or_exit(&opt, os.args, .Unix)
-	return opt
-}
-
-run_task_by_options :: proc (opt: Options) {
-	if opt.version {
-		version.task_run_default_version()
+run_task_by_options :: proc (args: options.Options) {
+	if args.version {
+		version.run(args)
 		return
 	}
 }
 
 process_tasks :: proc() {
-	opt := parse_system_args()
-	run_task_by_options(opt)
+	args := parse_system_args()
+	run_task_by_options(args)
 }

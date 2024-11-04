@@ -2,6 +2,8 @@
 tests.bin
 _build/
 dist/
+lib.bin
+project.bin
 
 ### Editors ###
 .vscode

@@ -31,9 +31,9 @@ Use this template as a base to create your own [Odin Projects](https://odin-lang
 - `priv/documentation`: A `Gungnir` directory to store the amalgamated documentation before `mdbook` compilation.
 - `priv/scripts`: Project helpful shell scripts for diverse tasks.
 
-## Taskfile
+## Run Script
 
-The project provides a [_Taskfile_](run) to ease commands:
+The project provides a [_./run_](run) script to ease commands:
 
 - `./run build:project`: Builds the `project.odin` file
 - `./run build:debug`: Builds the `lib` package.
@@ -44,6 +44,26 @@ The project provides a [_Taskfile_](run) to ease commands:
 - `./run hooks`: Install hooks to `.git` directory.
 - `./run format`: Runs format and lint in the codebase.
 - `./run docs`: Generates documentation using `Gungnir`.
+
+## Tasks
+
+A task can be defined by creating a new package inside `lib/tasks`, and which defines the `run` procedure.
+The `run` procedure will receive a list of all command line arguments passed, according to the user's terminal.
+You can use these tasks in `project.odin` as a way to access internal lib data or procedures.
+
+**Example Task**
+
+```odin
+package lib_tasks_version
+
+import "core:fmt"
+import "project:config"
+import "../options"
+
+run:: proc(args: options.Options) {
+	fmt.printfln("%s\n%s\n%s", config.COPYRIGHT, config.AUTHORS, config.WEBSITE)
+}
+```
 
 ## License
 
