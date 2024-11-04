@@ -52,3 +52,14 @@ WEBSITE							:: "https://github.com/odin-arsenal/draupnir"
 
 /// The current environment set with -define:env=dev at build time
 ENVIRONMENT 				:: #config(env, "dev")
+
+// Can be separated in different files if needed
+
+/// Dev environment settings
+when ENVIRONMENT == "dev" {}
+
+/// Prod environment settings
+when ENVIRONMENT == "prod" {}
+
+/// Test environment settings
+when ENVIRONMENT == "test" {}

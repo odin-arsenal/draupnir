@@ -28,10 +28,13 @@ Use this template as a base to create your own [Odin Projects](https://odin-lang
 - `_build`: hidden directory for storing project build files
 - `dist`: hidden directory for storing release builds.
 - `.hooks`: store git hooks for linting and formatting odin projects.
-- `config`: Stores configuration settings for different environments: dev, prod, runtime, test.
+- `config/config.odin`: Stores configuration settings for different environments: dev, prod, runtime, test.
+- `config/runtime.odin`: Used for setting or getting Environment variables and other runtime online settings.
 - `resources`: Stores different static assets like images needed for the application.
 - `priv/documentation`: A `Gungnir` directory to store the amalgamated documentation before `mdbook` compilation.
 - `priv/scripts`: Project helpful shell scripts for diverse tasks.
+- `test/test_helper.odin`: A file to set variables and other global settings for the tests.
+- `test/lib_test.odin`: An example test file.
 
 ## Run Script
 
@@ -47,6 +50,7 @@ The project provides a [_./run_](run) script to ease commands:
 - `./run format`: Runs format and lint in the codebase.
 - `./run docs`: Generates documentation using `Gungnir`.
 - `./run deps.get`: Downloads git submodules inside `deps`.
+- `./run test`: Run tests.
 
 ## Project Collection
 
@@ -63,6 +67,26 @@ import "../../../config"
 
 ```odin
 import "project:config"
+```
+
+## Env Define
+
+A define named `env` is pass down in build scripts
+that can be used for special setting in different build configurations
+inside `config/config.odin`.
+
+```odin
+when ENVIRONMENT == "dev" {
+
+}
+
+when ENVIRONMENT == "prod" {
+
+}
+
+when ENVIRONMENT == "test" {
+
+}
 ```
 
 ## Tasks

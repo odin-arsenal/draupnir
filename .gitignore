@@ -1,5 +1,5 @@
 ### Odin ###
-tests.bin
+test.bin
 _build/
 dist/
 lib.bin
