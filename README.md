@@ -12,6 +12,15 @@ In the same spirit, this project adds to Odin's wealth and power by scaffolding 
 
 - [Only the bare scaffold](minimal-template)
 
+## How to Install
+
+Download `draupnir` templates with a quick curl command.
+Ensure to download the `tar.gz` version to preserve file permissions.
+
+```sh
+curl -L https://github.com/odin-arsenal/draupnir/archive/refs/heads/main.tar.gz -o templates.tar.gz
+```
+
 ## License
 
 - BSD-3
