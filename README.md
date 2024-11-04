@@ -29,7 +29,7 @@ Use this template as a base to create your own [Odin Projects](https://odin-lang
 - `dist`: hidden directory for storing release builds.
 - `.hooks`: store git hooks for linting and formatting odin projects.
 - `config/config.odin`: Stores configuration settings for different environments: dev, prod, runtime, test.
-- `config/runtime.odin`: Used for setting or getting Environment variables and other runtime online settings.
+- `config/runtime.odin`: Used for setting or getting Environment variables and other runtime only settings.
 - `resources`: Stores different static assets like images needed for the application.
 - `priv/documentation`: A `Gungnir` directory to store the amalgamated documentation before `mdbook` compilation.
 - `priv/scripts`: Project helpful shell scripts for diverse tasks.
