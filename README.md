@@ -1,6 +1,9 @@
 # 💍  [Draupnir Project Template](https://github.com/odin-arsenal/draupnir)
 
-Draupnir, a magical ring that symbolizes prosperity and abundance. Every ninth night, Draupnir would produce eight new rings of the same size and weight, adding to Odin’s wealth and power. This magical ring adds to the allure of Odin’s arsenal and the mythology that surrounds it.
+
+[Draupnir](https://github.com/odin-arsenal/draupnir) a magical ring that symbolizes prosperity and abundance. Every ninth night, Draupnir would produce eight new rings of the same size and weight, adding to Odin’s wealth and power. This magical ring adds to the allure of Odin’s arsenal and the mythology that surrounds it.
+
+In the same spirit, this project adds to Odin's wealth and power by scaffolding `Odin` projects.
 
 ## Odin's Arsenal
 
@@ -26,7 +29,7 @@ Use this template as a base to create your own [Odin Projects](https://odin-lang
 - `dist`: hidden directory for storing release builds.
 - `.hooks`: store git hooks for linting and formatting odin projects.
 - `config`: Stores configuration settings for different environments: dev, prod, runtime, test.
-- `resources`: Stores different static assets like images or scripts needed for the application.
+- `resources`: Stores different static assets like images needed for the application.
 - `priv/documentation`: A `Gungnir` directory to store the amalgamated documentation before `mdbook` compilation.
 - `priv/scripts`: Project helpful shell scripts for diverse tasks.
 
@@ -44,7 +47,6 @@ The project provides a [_./run_](run) script to ease commands:
 - `./run format`: Runs format and lint in the codebase.
 - `./run docs`: Generates documentation using `Gungnir`.
 - `./run deps.get`: Downloads git submodules inside `deps`.
-- `./run docs`: Builds `Gungnir` docs.
 
 ## Tasks
 
