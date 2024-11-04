@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+odin strip-semicolon . $@
+odin check . $@

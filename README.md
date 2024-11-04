@@ -29,17 +29,21 @@ Use this template as a base to create your own [Odin Projects](https://odin-lang
 - `config`: Stores configuration settings for different environments: dev, prod, runtime, test.
 - `resources`: Stores different static assets like images or scripts needed for the application.
 - `priv/documentation`: A `Gungnir` directory to store the amalgamated documentation before `mdbook` compilation.
+- `priv/scripts`: Project helpful shell scripts for diverse tasks.
 
-## Makefile
+## Taskfile
 
-The project provides a _Makefile_ to ease commands:
+The project provides a [_Taskfile_](run) to ease commands:
 
-- `make docs`: Generates documentation using `Gungnir`.
-- `make build.project`: Builds the `project.odin` file
-- `make build.lib`: Builds the `lib` package.
-- `make release`: Builds the `lib` package and store it in `dist`.
-- `make version`: Builds the `lib` package and runs the `--version` command.
-- `make hooks`: Install hooks to `.git` directory.
+- `./run build:project`: Builds the `project.odin` file
+- `./run build:debug`: Builds the `lib` package.
+- `./run build:release`: Builds the `lib` package and store it in `dist`.
+- `./run project`: Runs the `project` binary. You can pass arguments.
+- `./run lib`: Runs the `lib` binary. You can pass arguments.
+- `./run version`: Builds the `lib` package and runs the `--version` command.
+- `./run hooks`: Install hooks to `.git` directory.
+- `./run format`: Runs format and lint in the codebase.
+- `./run docs`: Generates documentation using `Gungnir`.
 
 ## License
 
