@@ -48,6 +48,23 @@ The project provides a [_./run_](run) script to ease commands:
 - `./run docs`: Generates documentation using `Gungnir`.
 - `./run deps.get`: Downloads git submodules inside `deps`.
 
+## Project Collection
+
+In order to simplify the structure a collection is passed down to odin called `project`
+that points to the root directory.
+
+**Before**
+
+```odin
+import "../../../config"
+```
+
+**After**
+
+```odin
+import "project:config"
+```
+
 ## Tasks
 
 A task can be defined by creating a new package inside `lib/tasks`, and which defines the `run` procedure.
