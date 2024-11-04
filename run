@@ -67,6 +67,7 @@ function lib {
 }
 
 # Formats the project with odin
+# Ensure to update the collection inside hooks if more are added later
 function format {
 	priv/scripts/format ${COLLECTIONS}
 }
