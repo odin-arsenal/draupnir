@@ -1,4 +1,6 @@
 // A placeholder file to please Odin
 package draupnir
-
-main :: proc() {}
+import "core:fmt"
+main :: proc() {
+    fmt.println("https://github.com/odin-arsenal/draupnir/")
+}

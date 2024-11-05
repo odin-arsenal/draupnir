@@ -15,7 +15,7 @@ parse_system_args :: proc() -> options.Options {
 }
 
 run_task_by_options :: proc (args: options.Options) {
-	if args.version {
+	if args.ver {
 		version.run(args)
 		return
 	}

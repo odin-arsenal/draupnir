@@ -1,7 +1,7 @@
 ### Odin ###
 test.bin
 _build/
-dist/
+bin/
 lib.bin
 project.bin
 
