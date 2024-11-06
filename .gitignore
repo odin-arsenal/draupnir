@@ -1,3 +1,4 @@
 .DS_Store
-draupnir
-draupnir.o
+help
+help.o
+_scratch*
