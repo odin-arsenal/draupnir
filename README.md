@@ -8,6 +8,8 @@ In the same spirit, this project adds to Odin's wealth and power by scaffolding 
 
 This project is part of the [Odin's Arsenal](https://github.com/odin-arsenal/draupnir).
 
+----
+
 ## How to Download
 
 Download `draupnir` templates with a quick curl command.
@@ -34,7 +36,8 @@ The steps above were automated in a bash script.
 You can download it and put it inside `/usr/local/bin` 
 
 ```sh
-$ curl -L https://raw.githubusercontent.com/odin-arsenal/draupnir/HEAD/draupnir
+$ curl -L https://github.com/odin-arsenal/draupnir/releases/download/v1.0.0/draupnir.tar.gz -o draupnir.tar.gz
+$ tar xvzf draupnir.tar.gz
 $ cp draupnir /usr/local/bin
 ```
 
