@@ -132,7 +132,7 @@ In the `full` project template you can find these files and directories. In `min
 - `LICENSE.md`: What license the project adheres to?.
 - `CONTRIBUTING.md`: A quick introducction to the project, tailored for developers.
 
-- `.version`: A number indicating the current version (for CI purposes and _Gungnir_).
+- `project.ini`: A simple `*.ini` configuration file to store metadata about the project. Like version number and project name. May be used by tools such as _Gungnir_ to obtain information about the project.
 
 - `.tool-versions`: `asdf-vm` version declaration of tools for this project.
 
