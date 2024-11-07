@@ -1,0 +1,3 @@
+package Project
+
+main :: proc() {}

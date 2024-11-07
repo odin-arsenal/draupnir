@@ -1,4 +1,4 @@
-package lib_tasks_options
+package Tasks_Options
 
 /// Defines the available command line options
 Options :: struct {

@@ -1,4 +1,4 @@
-package config
+package Config
 
 // This file is responsible for configuring your application
 // and its dependencies.

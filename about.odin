@@ -1,6 +1,8 @@
 // A placeholder file to please Odin
-package Draupnir_Sdas
+package Draupnir
+
 import "core:fmt"
+
 main :: proc() {
     fmt.println("===========================")
     fmt.println("Draupnir Project Templates")

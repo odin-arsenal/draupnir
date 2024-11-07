@@ -1,4 +1,4 @@
-package lib_tasks
+package Tasks
 
 import "core:fmt"
 import "core:flags"

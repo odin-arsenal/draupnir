@@ -1,4 +1,4 @@
-package test
+package Test
 
 import "core:log"
 import "core:testing"

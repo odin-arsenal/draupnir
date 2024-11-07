@@ -1,4 +1,4 @@
-package lib_main
+package Lib
 
 import "core:fmt"
 
