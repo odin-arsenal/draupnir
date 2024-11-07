@@ -2,8 +2,8 @@
 test.bin
 _build/
 bin/
-lib.bin
 project.bin
+priv/logs/
 
 ### Editors ###
 .vscode

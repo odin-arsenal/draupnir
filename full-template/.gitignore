@@ -4,6 +4,7 @@ _build/
 bin/
 lib.bin
 project.bin
+priv/logs/
 
 ### Editors ###
 .vscode
