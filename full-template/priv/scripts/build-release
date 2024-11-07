@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-odin build project.odin -file -define:env=prod -warnings-as-errors -strict-style -out:bin/project $@

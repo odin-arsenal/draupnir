@@ -1,0 +1,474 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Draupnir Templates</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> About</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Draupnir Templates</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="--draupnir-project-templates"><a class="header" href="#--draupnir-project-templates">💍  <a href="https://github.com/odin-arsenal/draupnir">Draupnir Project Templates</a></a></h1>
+<p><a href="https://github.com/odin-arsenal/draupnir">Draupnir</a> is a magical ring that symbolizes prosperity and abundance. Every ninth night, Draupnir would produce eight new rings of the same size and weight, adding to Odin’s wealth and power. This magical ring adds to the allure of Odin’s arsenal and the mythology that surrounds it.</p>
+<p>In the same spirit, this project adds to Odin's wealth and power by scaffolding <code>Odin</code> projects.</p>
+<h2 id="odins-arsenal"><a class="header" href="#odins-arsenal">Odin's Arsenal</a></h2>
+<p>This project is part of the <a href="https://github.com/odin-arsenal/draupnir">Odin's Arsenal</a>.</p>
+<hr />
+<h2 id="how-to-download"><a class="header" href="#how-to-download">How to Download</a></h2>
+<p>Download <code>draupnir</code> templates with a quick curl command.
+Ensure to download the <code>tar.gz</code> version to preserve file permissions.</p>
+<pre><code class="language-sh">$ curl -L https://github.com/odin-arsenal/draupnir/archive/refs/heads/main.tar.gz -o templates.tar.gz
+</code></pre>
+<p>Untar the file and rename the template directory of your liking.
+You can remove the other files and directories.</p>
+<pre><code class="language-sh">$ tar –xvzf templates.tar.gz
+$ mv draupnir-main/minimal-template my-project
+$ rm -rf draupnir-main
+$ rm -rf templates.tar.gz
+$ cd my-project
+</code></pre>
+<h2 id="draupnir-command"><a class="header" href="#draupnir-command">Draupnir Command</a></h2>
+<p>The steps above were automated in a bash script.
+You can download it and put it inside <code>/usr/local/bin</code></p>
+<pre><code class="language-sh">$ curl -L https://github.com/odin-arsenal/draupnir/releases/download/v1.0.0/draupnir.tar.gz -o draupnir.tar.gz
+$ tar xvzf draupnir.tar.gz
+$ cp draupnir /usr/local/bin
+</code></pre>
+<p>Now you can create templates with <code>draupnir</code> command.</p>
+<pre><code class="language-sh">$ draupnir &lt;template&gt; &lt;new-project-directory&gt;
+</code></pre>
+<p><strong>Examples</strong></p>
+<pre><code class="language-sh">$ draupnir full my-new-project
+$ draupnir minimal my-new-project
+$ draupnir blank my-new-project
+</code></pre>
+<h2 id="why-use-draupnir-templates"><a class="header" href="#why-use-draupnir-templates">Why use Draupnir Templates?</a></h2>
+<p>These templates have in common the <code>project.odin</code> file and the <code>lib</code> directory. These are the core structures that a <em>Draupnir</em> template requires. Following this convention, many tools can have a common standard and help the community understand quicker and better <em>Odin</em> codebases. For example the <a href="https://github.com/odin-arsenal/gungnir"><code>Gungnir</code></a> tool can assume the codebase contains at minimum a <code>project.odin</code> file and a <code>lib</code> directory and start searching for files to document inside the <code>lib</code> directory. This convention simplifies many decisions and make tools more thoughtful and friendly.</p>
+<h3 id="where-this-convention-comes-from"><a class="header" href="#where-this-convention-comes-from">Where this convention comes from?</a></h3>
+<p>This convention takes inspiration and ideas from battle tested projects found in other languages and tools such as:</p>
+<ul>
+<li><a href="https://hexdocs.pm/elixir/introduction-to-mix.html#our-first-project">Elixir Mix</a>.</li>
+<li><a href="https://hexdocs.pm/phoenix/directory_structure.html">Phoenix Framework</a>.</li>
+<li><a href="https://gleam.run/writing-gleam/">Gleam</a></li>
+<li><a href="https://guides.rubyonrails.org/getting_started.html#creating-the-blog-application">Ruby on Rails</a>.</li>
+<li><a href="https://docs.vapor.codes/getting-started/folder-structure/">Vapor</a></li>
+</ul>
+<h3 id="projectodin"><a class="header" href="#projectodin">project.odin</a></h3>
+<p>This file is used for commands or other project related procedures. By default is an alias of <code>lib/lib.odin</code> main procedure. But can be modified as a special build, different from <code>lib.odin</code>. Is used mainly to identify the directory as an <code>odin</code> project. However can be used as the main file of the project instead of <code>lib.odin</code>.</p>
+<h3 id="lib"><a class="header" href="#lib">lib/</a></h3>
+<p>A directory that holds your application source code. It's required by the <em>Draupnir</em> template convention.</p>
+<h3 id="liblibodin"><a class="header" href="#liblibodin">lib/lib.odin</a></h3>
+<p>This file is were the main procedure code is stored or just be a library of procedures, enums, types, constants for the <code>project.odin</code> file to use. It's optional to be named <code>lib.odin</code> since the only requirement is the <code>lib</code> directory.</p>
+<h2 id="full-template"><a class="header" href="#full-template"><a href="full-template">Full Template</a></a></h2>
+<p>This project template have all the bells and whistles of a complete project: Readmes, Changelogs, dependency directory, docs, private directores, and other directories and files. Normally used in complex applications and command line apps.</p>
+<h3 id="when-to-use"><a class="header" href="#when-to-use">When to Use?</a></h3>
+<p>Use this template if you want a complete project from the start. It provides a good and strong structure for big applications to grow.  It includes the <code>run</code> script that enables the <code>-collection:project=.</code> param, and can build <code>debug</code> and <code>release</code> versions of both <code>project.odin</code>.</p>
+<ul>
+<li><a href="full-template">See the contents of the Full Template</a>.</li>
+</ul>
+<h3 id="components"><a class="header" href="#components">Components</a></h3>
+<p>The <code>full</code> project contains an additional component called <code>tasks</code> which help creating command line apps by parsing the arguments and providing a common structure for running tasks.</p>
+<h4 id="tasks"><a class="header" href="#tasks">Tasks</a></h4>
+<p>A task can be defined by creating a new package inside <code>lib/tasks</code>, and which defines the <code>run</code> procedure.
+The <code>run</code> procedure will receive a list of all command line arguments passed, according to the user's terminal.
+You can use these tasks in <code>project.odin</code> as a way to access internal lib data or procedures.</p>
+<p><strong>Example Task</strong></p>
+<pre><code class="language-odin">package Tasks_Version
+
+import "core:fmt"
+import "project:config"
+import "../options"
+
+run :: proc(args: options.Options) {
+  fmt.printfln("%s\n%s\n%s", config.COPYRIGHT, config.AUTHORS, config.WEBSITE)
+}
+</code></pre>
+<h2 id="minimal-template"><a class="header" href="#minimal-template"><a href="minimal-template">Minimal Template</a></a></h2>
+<p>This project template have only the minimum directories and files needed for <em>Gungnir</em> (<code>lib</code> and <code>project.odin</code>), so it can generate documentation. Also contains common files such as: <code>.gitignore</code>, <code>.editorconfig</code> and a sample <code>README.md</code> and <code>test</code> directory.</p>
+<h3 id="when-to-use-1"><a class="header" href="#when-to-use-1">When to Use?</a></h3>
+<p>Use this template if you want a lean starting point with just a <code>lib</code> and <code>project.odin</code> directories.
+Ideal for experiments, simple applications or want to tailor the structure at will. It includes the <code>run</code> script that enables the <code>-collection:project=.</code> param, and can build <code>debug</code> and <code>release</code> versions of both <code>project.odin</code>.</p>
+<ul>
+<li><a href="minimal-template">See the contents of the minimal template</a>.</li>
+</ul>
+<h2 id="blank-template"><a class="header" href="#blank-template"><a href="blank-template">Blank Template</a></a></h2>
+<p>This project template only contains: <code>lib/</code>, <code>project.odin</code>, <code>.gitignore</code> and <code>README.md</code>.
+It's the most lean possible template compatible with <em>Gungnir</em>. Besides the <code>lib</code> and <code>project.odin</code> directories
+is up to you to set the contents and structure of the project.</p>
+<ul>
+<li><a href="blank-template">See the contents of a blank template</a>.</li>
+</ul>
+<h2 id="structure-and-files"><a class="header" href="#structure-and-files">Structure and Files</a></h2>
+<p>In the <code>full</code> project template you can find these files and directories. In <code>minimal</code> template just a few of them are present.</p>
+<ul>
+<li>
+<p><code>lib</code>: A directory that holds your application source code. This directory can be broken into subdirectories (packages).</p>
+</li>
+<li>
+<p><code>test</code>: Directory with all of your application tests. It often mirrors the same structure found in <code>lib</code>.</p>
+</li>
+<li>
+<p><code>priv</code>: A directory that keeps all resources that are necessary in production but are not directly part of your source code. You typically keep database scripts, translation files, images, and more in here. Generated assets, created from <em>Gungnir</em> are placed in <code>priv/documentation</code> by default.</p>
+</li>
+<li>
+<p><code>deps</code>: Directory for all dependencies (external libraries and vendored code) of your application. It normally contains <em>Git Submodules</em>.</p>
+</li>
+<li>
+<p><code>docs</code>: Documentation generated to be available in Github Pages or similar.</p>
+</li>
+<li>
+<p><code>lib.docg</code>: <code>Gungnir</code> documentation catalogue.</p>
+</li>
+<li>
+<p><code>SUMMARY.md</code>: A file used in <code>Gungnir</code> to generate a menu.</p>
+</li>
+<li>
+<p><code>README.md</code>: The main <em>README</em> of the project.</p>
+</li>
+<li>
+<p><code>AUTHORS.md</code>: Who is the team behind the project.</p>
+</li>
+<li>
+<p><code>CHANGELOG.md</code>: Which changes the project had overtime.</p>
+</li>
+<li>
+<p><code>LICENSE.md</code>: What license the project adheres to?.</p>
+</li>
+<li>
+<p><code>CONTRIBUTING.md</code>: A quick introducction to the project, tailored for developers.</p>
+</li>
+<li>
+<p><code>project.ini</code>: A simple <code>*.ini</code> configuration file to store metadata about the project. Like version number and project name. May be used by tools such as <em>Gungnir</em> to obtain information about the project.</p>
+</li>
+<li>
+<p><code>.tool-versions</code>: <code>asdf-vm</code> version declaration of tools for this project.</p>
+</li>
+<li>
+<p><code>run</code>: A bash script to run helper commands.</p>
+</li>
+<li>
+<p><code>_build</code>:  A directory created by the run command line tool that ships as part of <em>Draupnir</em> that holds all compilation artifacts. This directory must not be checked into version control and it can be removed at any time. Removing it will force the project to rebuild your application from scratch.</p>
+</li>
+<li>
+<p><code>bin</code>:  A directory created by the run command line tool that ships as part of <em>Draupnir</em> that holds all compilation artifacts for <em>Release</em> environment. This directory must not be checked into version control and it can be removed at any time. Removing it will force the project to rebuild your application from scratch.</p>
+</li>
+<li>
+<p><code>.hooks</code>: store git hooks for linting and formatting odin projects.</p>
+</li>
+<li>
+<p><code>config/</code>: A directory that holds your project configuration. The <code>config/config.odin</code> file is the entry point for your configuration.</p>
+</li>
+<li>
+<p><code>config/config.odin</code>: Stores configuration settings for different environments: dev, prod, runtime, test.</p>
+</li>
+<li>
+<p><code>config/runtime.odin</code>: Used for setting or getting Environment variables and other runtime only settings.</p>
+</li>
+<li>
+<p><code>resources</code>: Stores different static assets like images needed for the application.</p>
+</li>
+<li>
+<p><code>priv/documentation</code>: A <code>Gungnir</code> directory to store the amalgamated documentation before <code>mdbook</code> compilation.</p>
+</li>
+<li>
+<p><code>priv/scripts</code>: Project helpful shell scripts for diverse tasks.</p>
+</li>
+<li>
+<p><code>priv/logs</code>: Project log registry.</p>
+</li>
+<li>
+<p><code>test/test_helper.odin</code>: A file to set variables and other global settings for the tests.</p>
+</li>
+<li>
+<p><code>test/lib_test.odin</code>: An example test file.</p>
+</li>
+</ul>
+<h2 id="full-run-script"><a class="header" href="#full-run-script">Full Run Script</a></h2>
+<p>The <code>full</code> and <code>minimal</code> templates provides a <a href="run"><em>./run</em></a> script to ease commands:</p>
+<ul>
+<li><code>./run build.debug</code>: Builds the <code>project.odin</code> file in debug mode.</li>
+<li><code>./run build.release</code>: Builds the <code>project.odin</code> file in production mode and store it in <code>bin</code>.</li>
+<li><code>./run project</code>: Runs the <code>project</code> binary. You can pass arguments.</li>
+<li><code>./run version</code>: Builds the <code>debug</code> binary and runs the <code>-v</code> command.</li>
+<li><code>./run hooks</code>: Install hooks to <code>.git</code> directory.</li>
+<li><code>./run format</code>: Runs format and lint in the codebase.</li>
+<li><code>./run docs</code>: Generates documentation using <code>Gungnir</code>.</li>
+<li><code>./run deps.get</code>: Downloads git submodules inside <code>deps</code>.</li>
+<li><code>./run test</code>: Run tests.</li>
+</ul>
+<h2 id="project-collection"><a class="header" href="#project-collection">Project Collection</a></h2>
+<p>The <code>full</code> and <code>minimal</code> templates provides a collection is passed down to <code>odin</code> called <code>project</code>
+that points to the root directory.</p>
+<p><strong>Before</strong></p>
+<pre><code class="language-odin">import "../../../config"
+</code></pre>
+<p><strong>After</strong></p>
+<pre><code class="language-odin">import "project:config"
+</code></pre>
+<h2 id="env-define"><a class="header" href="#env-define">Env Define</a></h2>
+<p>Both <code>full</code> and <code>minimal</code> templates can use a define named <code>env</code> is pass down in build scripts
+that can be used for special setting in different build configurations
+(in full template inside <code>config/config.odin</code>).</p>
+<pre><code class="language-odin">when ENVIRONMENT == "dev" {
+
+}
+
+when ENVIRONMENT == "prod" {
+
+}
+
+when ENVIRONMENT == "test" {
+
+}
+</code></pre>
+<h2 id="structuring-applications"><a class="header" href="#structuring-applications">Structuring Applications</a></h2>
+<p>The rule of thumb when structuring applications, is to allow the top-level directories to directly communicate with layer below, but any communication crossing more than one line is forbidden. As an example, <code>project.odin</code> can retrieve packages in <code>lib/tasks</code>. Reaching out from <code>lib/tasks</code> to <code>project.odin</code> is - however - strictly forbidden.</p>
+<p>The rule of thumb that’s worth following is trying to keep the directory structure as flat as it is possible and manageable. You don’t really need to type more than necessary when opening/saving files - as long as there is sane number of files in a directory. There is no need to multiply subdirectories for the sake of multiplying subdirectories.</p>
+<p>The whole idea is to have packages that work as an entry point for your app’s business. Then, all sub-entities for that aspect live there, on inner files and directories. It’s like your lib has sub-libraries. Then your sub-library has a main interface that lives on an entry point package. The main reasoning is thinking about the deletion and moving. If you want to move a package to another directory, all its files should move together. See the entry point purpose working like an index file in a web server directory, and usually, the index files live in the directory as children, not as siblings.</p>
+<pre><code class="language-text">lib/social_network
+    └── authentication
+            ├── authentication.odin
+            ├── google.odin
+            ├── facebook.odin
+            └── password.odin
+</code></pre>
+<h3 id="avoid-namespacing"><a class="header" href="#avoid-namespacing">Avoid namespacing</a></h3>
+<p>Some kinds of files fit in one or more categories and do not belong exclusively to a common package. For example, errors, your app might have several packages that represent errors. Let’s say you have multiple errors in your app: argument, arithmetic, not found, etc. They are all errors, but they should not belong to a single "Error package". Instead of creating a namespace, you can use a suffix. Your naming would look like this:</p>
+<ul>
+<li>package.ArgumentError</li>
+<li>package.ArithmeticError</li>
+<li>package.NotFoundError</li>
+<li>package.TemporarilyUnavailableError</li>
+</ul>
+<p>So they aren’t tied anymore to the unhelpful namespacing and concept "Error", now you’re free to move them to sub or parent applications as the time needs. As long as your project grows, these files that aren’t together conceptually might pollute your OS directories and make things hard to navigate. So it’s okay to organise your OS files and directories in a way that works better.</p>
+<h3 id="package-naming"><a class="header" href="#package-naming">Package naming</a></h3>
+<p>Package naming doesn’t need to be a mirror of your OS directories. It’s good when it can, but we don’t need to ruin their naming for the sake of the OS system.</p>
+<p>For example</p>
+<pre><code class="language-text">└── controllers
+    ├── account_controller.odin
+    ├── bread_controller.odin
+    └── user_controller.odin
+</code></pre>
+<p>And the package is named <code>Project_User_Controller</code>, and not <code>Project_Controllers_User_Controller</code>.</p>
+<p>The convention for naming packages is using <code>CamelCase</code> and separate each word with underscore.</p>
+<h2 id="license"><a class="header" href="#license">License</a></h2>
+<ul>
+<li>BSD-3</li>
+</ul>
+<h2 id="credits"><a class="header" href="#credits">Credits</a></h2>
+<p>
+  Made with <i class="fa fa-heart">&#9829;</i> by
+  <a href="https://ninjas.cl">
+    Ninjas.cl
+  </a>.
+</p>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </div>
+    </body>
+</html>

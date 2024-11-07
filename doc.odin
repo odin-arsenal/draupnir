@@ -1,0 +1,3 @@
+package Docs
+
+main :: proc() {}

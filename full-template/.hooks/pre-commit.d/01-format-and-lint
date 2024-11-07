@@ -1,5 +1,0 @@
-#!/usr/bin/env sh
-
-# Formats odin code and lint before every commit
-# Ensure to update the collection if more are added later
-odin strip-semicolon . -collection:project=. && odin check . -collection:project=.

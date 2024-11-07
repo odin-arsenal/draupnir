@@ -1,0 +1,6 @@
+[book]
+authors = ["Odin's Arsenal"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Draupnir Templates"
