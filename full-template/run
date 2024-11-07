@@ -20,7 +20,7 @@ function test {
 }
 
 # Builds docs using Gungnir
-function docs {
+function docs.gungnir {
 	echo "TODO"
 }
 

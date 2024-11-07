@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+function build {
+    mdbook build
+}
+
+function serve {
+    mdbook serve
+}
+
+# prints help
+function help {
+    echo "$0 <task> <args>"
+    echo "Tasks:"
+    compgen -A function | cat -n
+}
+
+function default {
+    # Default task to execute
+    help
+}
+
+#TIMEFORMAT="Task completed in %3lR"
+TIMEFORMAT=""
+time ${@:-default}
