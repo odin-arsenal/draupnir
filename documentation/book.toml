@@ -1,6 +1,16 @@
 [book]
-authors = ["Odin's Arsenal"]
+title = "Draupnir Templates"
+description = "Scaffolds Odin projects"
+authors = ["Odin's Arsenal", "Ninjas.cl"]
 language = "en"
 multilingual = false
 src = "src"
-title = "Draupnir Templates"
+
+[output.html]
+smart-punctuation = true
+site-url = "https://odin-arsenal.github.io/draupnir/"
+additional-css = ["./theme/styles/github-dark.min.css"]
+git-repository-url = "https://github.com/odin-arsenal/draupnir/"
+
+[output.html.code.hidelines]
+odin = "~"

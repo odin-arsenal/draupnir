@@ -3,8 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Draupnir Templates</title>
-        <meta name="robots" content="noindex">
+        <title>Full Template - Draupnir Templates</title>
 
 
         <!-- Custom HTML head -->
@@ -90,7 +89,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Draupnir Templates</li><li class="chapter-item expanded "><a href="About.html"><strong aria-hidden="true">1.</strong> About</a></li><li class="chapter-item expanded affix "><li class="part-title">Templates</li><li class="chapter-item expanded "><a href="BlankTemplate.html"><strong aria-hidden="true">2.</strong> Blank Template</a></li><li class="chapter-item expanded "><a href="MinimalTemplate.html"><strong aria-hidden="true">3.</strong> Minimal Template</a></li><li class="chapter-item expanded "><a href="FullTemplate.html"><strong aria-hidden="true">4.</strong> Full Template</a></li><li class="chapter-item expanded affix "><li class="part-title">Articles</li><li class="chapter-item expanded "><a href="StructuringProjects.html"><strong aria-hidden="true">5.</strong> Structuring Odin Projects</a></li><li class="chapter-item expanded affix "><li class="part-title">Authors</li><li class="chapter-item expanded "><a href="License.html"><strong aria-hidden="true">6.</strong> License</a></li><li class="chapter-item expanded "><a href="Credits.html"><strong aria-hidden="true">7.</strong> Credits</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Draupnir Templates</li><li class="chapter-item expanded "><a href="About.html"><strong aria-hidden="true">1.</strong> About</a></li><li class="chapter-item expanded affix "><li class="part-title">Templates</li><li class="chapter-item expanded "><a href="BlankTemplate.html"><strong aria-hidden="true">2.</strong> Blank Template</a></li><li class="chapter-item expanded "><a href="MinimalTemplate.html"><strong aria-hidden="true">3.</strong> Minimal Template</a></li><li class="chapter-item expanded "><a href="FullTemplate.html" class="active"><strong aria-hidden="true">4.</strong> Full Template</a></li><li class="chapter-item expanded affix "><li class="part-title">Articles</li><li class="chapter-item expanded "><a href="StructuringProjects.html"><strong aria-hidden="true">5.</strong> Structuring Odin Projects</a></li><li class="chapter-item expanded affix "><li class="part-title">Authors</li><li class="chapter-item expanded "><a href="License.html"><strong aria-hidden="true">6.</strong> License</a></li><li class="chapter-item expanded "><a href="Credits.html"><strong aria-hidden="true">7.</strong> Credits</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -178,76 +177,9 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="--draupnir-project-templates"><a class="header" href="#--draupnir-project-templates">💍  <a href="https://github.com/odin-arsenal/draupnir">Draupnir Project Templates</a></a></h1>
-<p><a href="https://github.com/odin-arsenal/draupnir">Draupnir</a> is a magical ring that symbolizes prosperity and abundance. Every ninth night, Draupnir would produce eight new rings of the same size and weight, adding to Odin’s wealth and power. This magical ring adds to the allure of Odin’s arsenal and the mythology that surrounds it.</p>
-<p>In the same spirit, this project adds to Odin’s wealth and power by scaffolding <code>Odin</code> projects.</p>
-<ul>
-<li><a href="https://github.com/odin-arsenal/draupnir/">Github</a></li>
-</ul>
-<h2 id="odins-arsenal"><a class="header" href="#odins-arsenal">Odin’s Arsenal</a></h2>
-<p>This project is part of the <a href="https://github.com/odin-arsenal/">Odin’s Arsenal</a>.</p>
-<hr />
-<h2 id="how-to-download"><a class="header" href="#how-to-download">How to Download</a></h2>
-<p>Download <code>draupnir</code> templates with a quick curl command.
-Ensure to download the <code>tar.gz</code> version to preserve file permissions.</p>
-<pre><code class="language-sh">$ curl -L https://github.com/odin-arsenal/draupnir/archive/refs/heads/main.tar.gz -o templates.tar.gz
-</code></pre>
-<p>Untar the file and rename the template directory of your liking.
-You can remove the other files and directories.</p>
-<pre><code class="language-sh">$ tar –xvzf templates.tar.gz
-$ mv draupnir-main/minimal-template my-project
-$ rm -rf draupnir-main
-$ rm -rf templates.tar.gz
-$ cd my-project
-</code></pre>
-<h2 id="draupnir-command"><a class="header" href="#draupnir-command">Draupnir Command</a></h2>
-<p>The steps above were automated in a bash script.
-You can download it and put it inside <code>/usr/local/bin</code></p>
-<pre><code class="language-sh">$ curl -L https://github.com/odin-arsenal/draupnir/releases/download/v1.0.0/draupnir.tar.gz -o draupnir.tar.gz
-$ tar xvzf draupnir.tar.gz
-$ cp draupnir /usr/local/bin
-</code></pre>
-<p>Now you can create templates with <code>draupnir</code> command.</p>
-<pre><code class="language-sh">$ draupnir &lt;template&gt; &lt;new-project-directory&gt;
-</code></pre>
-<p><strong>Examples</strong></p>
-<pre><code class="language-sh">$ draupnir full my-new-project
-$ draupnir minimal my-new-project
-$ draupnir blank my-new-project
-</code></pre>
-<h2 id="why-use-draupnir-templates"><a class="header" href="#why-use-draupnir-templates">Why use Draupnir Templates?</a></h2>
-<p>These templates have in common the <code>project.odin</code> file and the <code>lib</code> directory. These are the core structures that a <em>Draupnir</em> template requires. Following this convention, many tools can have a common standard and help the community understand quicker and better <em>Odin</em> codebases. For example the <a href="https://github.com/odin-arsenal/gungnir"><code>Gungnir</code></a> tool can assume the codebase contains at minimum a <code>project.odin</code> file and a <code>lib</code> directory and start searching for files to document inside the <code>lib</code> directory. This convention simplifies many decisions and make tools more thoughtful and friendly.</p>
-<h3 id="where-this-convention-comes-from"><a class="header" href="#where-this-convention-comes-from">Where this convention comes from?</a></h3>
-<p>This convention takes inspiration and ideas from battle tested projects found in other languages and tools such as:</p>
-<ul>
-<li><a href="https://hexdocs.pm/elixir/introduction-to-mix.html#our-first-project">Elixir Mix</a>. Base idea for the “minimal template”.</li>
-<li><a href="https://hexdocs.pm/phoenix/directory_structure.html">Phoenix Framework</a>. Base idea for the “full template”.</li>
-<li><a href="https://gleam.run/writing-gleam/">Gleam</a>. Base idea for the <code>project.ini</code>.</li>
-</ul>
-<h3 id="projectodin"><a class="header" href="#projectodin">project.odin</a></h3>
-<h3 id="lib"><a class="header" href="#lib">lib/</a></h3>
-<p>A directory that holds your application source code. It’s required by the <em>Draupnir</em> template convention.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="blank-template"><a class="header" href="#blank-template"><a href="blank-template">Blank Template</a></a></h1>
-<p>This project template only contains: <code>lib/</code>, <code>project.odin</code>, <code>.gitignore</code> and <code>README.md</code>.
-It’s the most lean possible template compatible with <em>Gungnir</em>. Besides the <code>lib</code> and <code>project.odin</code> directories
-is up to you to set the contents and structure of the project.</p>
-<ul>
-<li><a href="blank-template">See the contents of a blank template</a>.</li>
-</ul>
-<h2 id="structure-and-files"><a class="header" href="#structure-and-files">Structure and Files</a></h2>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="minimal-template"><a class="header" href="#minimal-template"><a href="minimal-template">Minimal Template</a></a></h1>
-<p>This project template have only the minimum directories and files needed for <em>Gungnir</em> (<code>lib</code> and <code>project.odin</code>), so it can generate documentation. Also contains common files such as: <code>.gitignore</code>, <code>.editorconfig</code> and a sample <code>README.md</code> and <code>test</code> directory.</p>
-<h2 id="when-to-use"><a class="header" href="#when-to-use">When to Use?</a></h2>
-<p>Use this template if you want a lean starting point with just a <code>lib</code> and <code>project.odin</code> directories.
-Ideal for experiments, simple applications or want to tailor the structure at will. It includes the <code>run</code> script that enables the <code>-collection:project=.</code> param, and can build <code>debug</code> and <code>release</code> versions of both <code>project.odin</code>.</p>
-<ul>
-<li><a href="minimal-template">See the contents of the minimal template</a>.</li>
-</ul>
-<h2 id="structure-and-files-1"><a class="header" href="#structure-and-files-1">Structure and Files</a></h2>
-<h2 id="run-script"><a class="header" href="#run-script">Run Script</a></h2>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="full-template"><a class="header" href="#full-template"><a href="full-template">Full Template</a></a></h1>
+                        <h1 id="full-template"><a class="header" href="#full-template"><a href="full-template">Full Template</a></a></h1>
 <p>This project template have all the bells and whistles of a complete project: Readmes, Changelogs, dependency directory, docs, private directores, and other directories and files. Normally used in complex applications and command line apps.</p>
-<h2 id="when-to-use-1"><a class="header" href="#when-to-use-1">When to Use?</a></h2>
+<h2 id="when-to-use"><a class="header" href="#when-to-use">When to Use?</a></h2>
 <p>Use this template if you want a complete project from the start. It provides a good and strong structure for big applications to grow.  It includes the <code>run</code> script that enables the <code>-collection:project=.</code> param, and can build <code>debug</code> and <code>release</code> versions of both <code>project.odin</code>.</p>
 <ul>
 <li><a href="full-template">See the contents of the Full Template</a>.</li>
@@ -271,7 +203,7 @@ run :: proc(args: options.Options) {
 </code></pre>
 <h3 id="logger"><a class="header" href="#logger">Logger</a></h3>
 <h3 id="project-configuration-projectini"><a class="header" href="#project-configuration-projectini">Project configuration (project.ini)</a></h3>
-<h2 id="structure-and-files-2"><a class="header" href="#structure-and-files-2">Structure and Files</a></h2>
+<h2 id="structure-and-files"><a class="header" href="#structure-and-files">Structure and Files</a></h2>
 <p>In the <code>full</code> project template you can find these files and directories. In <code>minimal</code> template just a few of them are present.</p>
 <ul>
 <li>
@@ -394,73 +326,18 @@ when ENVIRONMENT == "test" {
 
 }
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="structuring-odin-projects"><a class="header" href="#structuring-odin-projects">Structuring Odin Projects</a></h1>
-<p>The rule of thumb when structuring applications, is to allow the top-level directories to directly communicate with layer below, but any communication crossing more than one line is forbidden. As an example, <code>project.odin</code> can retrieve packages in <code>lib/tasks</code>. Reaching out from <code>lib/tasks</code> to <code>project.odin</code> is - however - strictly forbidden.</p>
-<p>The rule of thumb that’s worth following is trying to keep the directory structure as flat as it is possible and manageable. You don’t really need to type more than necessary when opening/saving files - as long as there is sane number of files in a directory. There is no need to multiply subdirectories for the sake of multiplying subdirectories.</p>
-<p>The whole idea is to have packages that work as an entry point for your app’s business. Then, all sub-entities for that aspect live there, on inner files and directories. It’s like your lib has sub-libraries. Then your sub-library has a main interface that lives on an entry point package. The main reasoning is thinking about the deletion and moving. If you want to move a package to another directory, all its files should move together. See the entry point purpose working like an index file in a web server directory, and usually, the index files live in the directory as children, not as siblings.</p>
-<pre><code class="language-text">lib/social_network
-    └── authentication
-            ├── authentication.odin
-            ├── google.odin
-            ├── facebook.odin
-            └── password.odin
-</code></pre>
-<h2 id="avoid-namespacing"><a class="header" href="#avoid-namespacing">Avoid namespacing</a></h2>
-<p>Some kinds of files fit in one or more categories and do not belong exclusively to a common package. For example, errors, your app might have several packages that represent errors. Let’s say you have multiple errors in your app: argument, arithmetic, not found, etc. They are all errors, but they should not belong to a single “Error package”. Instead of creating a namespace, you can use a suffix. Your naming would look like this:</p>
-<ul>
-<li>package.ArgumentError</li>
-<li>package.ArithmeticError</li>
-<li>package.NotFoundError</li>
-<li>package.TemporarilyUnavailableError</li>
-</ul>
-<p>So they aren’t tied anymore to the unhelpful namespacing and concept “Error”, now you’re free to move them to sub or parent applications as the time needs. As long as your project grows, these files that aren’t together conceptually might pollute your OS directories and make things hard to navigate. So it’s okay to organise your OS files and directories in a way that works better.</p>
-<h2 id="package-naming-conventions"><a class="header" href="#package-naming-conventions">Package naming conventions</a></h2>
-<p>Package naming doesn’t need to be a mirror of your OS directories. It’s good when it can, but we don’t need to ruin their naming for the sake of the OS system.</p>
-<p>For example</p>
-<pre><code class="language-text">└── controllers
-    ├── account_controller.odin
-    ├── bread_controller.odin
-    └── user_controller.odin
-</code></pre>
-<p>And the package is named <code>Project_User_Controller</code>, and not <code>Project_Controllers_User_Controller</code>.</p>
-<p>The convention for naming packages is using <code>CamelCase</code> and separate each word with underscore.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="modified-bsd-license"><a class="header" href="#modified-bsd-license">Modified BSD License</a></h1>
-<p><em>Copyright ©, <code>Ninjas.cl</code></em>
-<em>All rights reserved.</em></p>
-<p>Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are met:</p>
-<ol>
-<li>Redistributions of source code must retain the above copyright
-notice, this list of conditions and the following disclaimer.</li>
-<li>Redistributions in binary form must reproduce the above copyright
-notice, this list of conditions and the following disclaimer in the
-documentation and/or other materials provided with the distribution.</li>
-<li>Neither the name of the <code>Ninjas.cl</code> nor the
-names of its contributors may be used to endorse or promote products
-derived from this software without specific prior written permission.</li>
-</ol>
-<p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS “AS IS” AND
-ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL <code>Ninjas.cl</code> BE LIABLE FOR ANY
-DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
-ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="credits"><a class="header" href="#credits">Credits</a></h1>
-<p>
-  Made with <i class="fa fa-heart">&#9829;</i> by
-  <a href="https://ninjas.cl">
-    Ninjas.cl
-  </a>.
-</p>
+
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="MinimalTemplate.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
 
+                            <a rel="next prefetch" href="StructuringProjects.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -468,7 +345,13 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="MinimalTemplate.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
 
+                    <a rel="next prefetch" href="StructuringProjects.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
             </nav>
 
         </div>
@@ -491,11 +374,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
 
         <!-- Custom JS scripts -->
 
-        <script>
-        window.addEventListener('load', function() {
-            window.setTimeout(window.print, 100);
-        });
-        </script>
 
     </div>
     </body>
