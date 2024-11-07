@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+# Project TaskFile
+#
+# See https://github.com/adriancooney/Taskfile
+#
+# A Taskfile is a bash (or zsh etc.) script that follows
+# a specific format. It's called Taskfile, sits in the root of your project
+# (alongside your other project files) and contains the tasks to run your project.
+#
+# Example: ./run build
+#
+
+function build {
+    cd documentation && mdbook build
+    cd ..
+    rm -rf docs
+    mkdir -p docs
+    cp -r documentation/book/* docs
+}
+
+function serve {
+    cd documentation && mdbook serve
+    cd ..
+}
+
+# prints help
+function help {
+    echo "$0 <task> <args>"
+    echo "Tasks:"
+    compgen -A function | cat -n
+}
+
+function default {
+    # Default task to execute
+    help
+}
+
+#TIMEFORMAT="Task completed in %3lR"
+TIMEFORMAT=""
+time ${@:-default}
+

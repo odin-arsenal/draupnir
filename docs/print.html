@@ -32,6 +32,8 @@
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="./theme/styles/github-dark.min.css">
 
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </head>
     <body class="sidebar-visible no-js">
     <div id="body-container">
@@ -181,9 +183,6 @@
                         <h1 id="--draupnir-project-templates"><a class="header" href="#--draupnir-project-templates">💍  <a href="https://github.com/odin-arsenal/draupnir">Draupnir Project Templates</a></a></h1>
 <p><a href="https://github.com/odin-arsenal/draupnir">Draupnir</a> is a magical ring that symbolizes prosperity and abundance. Every ninth night, Draupnir would produce eight new rings of the same size and weight, adding to Odin’s wealth and power. This magical ring adds to the allure of Odin’s arsenal and the mythology that surrounds it.</p>
 <p>In the same spirit, this project adds to Odin’s wealth and power by scaffolding <code>Odin</code> projects.</p>
-<ul>
-<li><a href="https://github.com/odin-arsenal/draupnir/">Github</a></li>
-</ul>
 <h2 id="odins-arsenal"><a class="header" href="#odins-arsenal">Odin’s Arsenal</a></h2>
 <p>This project is part of the <a href="https://github.com/odin-arsenal/">Odin’s Arsenal</a>.</p>
 <hr />
@@ -493,7 +492,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
 
         <script>
         window.addEventListener('load', function() {
-            window.setTimeout(window.print, 100);
+            MathJax.Hub.Register.StartupHook('End', function() {
+                window.setTimeout(window.print, 100);
+            });
         });
         </script>
 

@@ -8,6 +8,7 @@ src = "src"
 
 [output.html]
 smart-punctuation = true
+mathjax-support = true
 site-url = "https://odin-arsenal.github.io/draupnir/"
 additional-css = ["./theme/styles/github-dark.min.css"]
 git-repository-url = "https://github.com/odin-arsenal/draupnir/"

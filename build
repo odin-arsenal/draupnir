@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-cd documentation && mdbook build
-cd ..
-rm -rf docs
-mkdir -p docs
-cp -r documentation/book/* docs
