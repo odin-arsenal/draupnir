@@ -45,7 +45,7 @@ setup_logger :: proc() -> os.Handle {
 	return log_file_handle
 }
 
-// Main entry point of the appllication
+// Main entry point of the application
 // Setups the project wide config and settings
 main :: proc() {
 	// Read project settings
