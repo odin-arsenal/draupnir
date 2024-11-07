@@ -4,8 +4,10 @@
 package Project
 
 import "core:fmt"
-import "lib"
+import "core:os"
+
+import app "lib"
 
 main :: proc() {
-	lib.main()
+	app.start(os.args)
 }

@@ -87,7 +87,7 @@ This project template have all the bells and whistles of a complete project: Rea
 
 ### When to Use?
 
-Use this template if you want a complete project from the start. It provides a good and strong structure for big applications to grow.  It includes the `run` script that enables the `-collection:project=.` param, and can build `debug` and `release` versions of both `project.odin` and `lib`.
+Use this template if you want a complete project from the start. It provides a good and strong structure for big applications to grow.  It includes the `run` script that enables the `-collection:project=.` param, and can build `debug` and `release` versions of both `project.odin`.
 
 - [See the contents of the Full Template](full-template).
 
@@ -104,7 +104,7 @@ You can use these tasks in `project.odin` as a way to access internal lib data o
 **Example Task**
 
 ```odin
-package lib_tasks_version
+package Tasks_Version
 
 import "core:fmt"
 import "project:config"
@@ -122,7 +122,7 @@ This project template have only the minimum directories and files needed for _Gu
 ### When to Use?
 
 Use this template if you want a lean starting point with just a `lib` and `project.odin` directories.
-Ideal for experiments, simple applications or want to tailor the structure at will. It includes the `run` script that enables the `-collection:project=.` param, and can build `debug` and `release` versions of both `project.odin` and `lib`.
+Ideal for experiments, simple applications or want to tailor the structure at will. It includes the `run` script that enables the `-collection:project=.` param, and can build `debug` and `release` versions of both `project.odin`.
 
 - [See the contents of the minimal template](minimal-template).
 
@@ -176,6 +176,7 @@ In the `full` project template you can find these files and directories. In `min
 - `resources`: Stores different static assets like images needed for the application.
 - `priv/documentation`: A `Gungnir` directory to store the amalgamated documentation before `mdbook` compilation.
 - `priv/scripts`: Project helpful shell scripts for diverse tasks.
+- `priv/logs`: Project log registry.
 - `test/test_helper.odin`: A file to set variables and other global settings for the tests.
 - `test/lib_test.odin`: An example test file.
 
@@ -183,12 +184,10 @@ In the `full` project template you can find these files and directories. In `min
 
 The `full` and `minimal` templates provides a [_./run_](run) script to ease commands:
 
-- `./run build.project`: Builds the `project.odin` file
-- `./run build.debug`: Builds the `lib` package.
-- `./run build.release`: Builds the `lib` package and store it in `dist`.
+- `./run build.debug`: Builds the `project.odin` file in debug mode.
+- `./run build.release`: Builds the `project.odin` file in production mode and store it in `bin`.
 - `./run project`: Runs the `project` binary. You can pass arguments.
-- `./run lib`: Runs the `lib` binary. You can pass arguments.
-- `./run version`: Builds the `lib` package and runs the `--version` command.
+- `./run version`: Builds the `debug` binary and runs the `-v` command.
 - `./run hooks`: Install hooks to `.git` directory.
 - `./run format`: Runs format and lint in the codebase.
 - `./run docs`: Generates documentation using `Gungnir`.
