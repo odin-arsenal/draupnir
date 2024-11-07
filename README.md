@@ -260,7 +260,7 @@ Some kinds of files fit in one or more categories and do not belong exclusively 
 
 So they aren’t tied anymore to the unhelpful namespacing and concept "Error", now you’re free to move them to sub or parent applications as the time needs. As long as your project grows, these files that aren’t together conceptually might pollute your OS directories and make things hard to navigate. So it’s okay to organise your OS files and directories in a way that works better. 
 
-### package naming
+### Package naming
 
 Package naming doesn’t need to be a mirror of your OS directories. It’s good when it can, but we don’t need to ruin their naming for the sake of the OS system.
 
@@ -273,7 +273,9 @@ For example
     └── user_controller.odin
 ```
 
-And the package is named `project_user_controller`, and not `project_controllers_user_controller`.
+And the package is named `Project_User_Controller`, and not `Project_Controllers_User_Controller`.
+
+The convention for naming packages is using `CamelCase` and separate each word with underscore.
 
 ## License
 
