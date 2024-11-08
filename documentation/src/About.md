@@ -54,22 +54,3 @@ $ draupnir full my-new-project
 $ draupnir minimal my-new-project
 $ draupnir blank my-new-project
 ```
-
-## Why use Draupnir Templates?
-
-These templates have in common the `project.odin` file and the `lib` directory. These are the core structures that a _Draupnir_ template requires. Following this convention, many tools can have a common standard and help the community understand quicker and better _Odin_ codebases. For example the [`Gungnir`](https://github.com/odin-arsenal/gungnir) tool can assume the codebase contains at minimum a `project.odin` file and a `lib` directory and start searching for files to document inside the `lib` directory. This convention simplifies many decisions and make tools more thoughtful and friendly.
-
-### Where this convention comes from?
-
-This convention takes inspiration and ideas from battle tested projects found in other languages and tools such as:
-
-- [Elixir Mix](https://hexdocs.pm/elixir/introduction-to-mix.html#our-first-project). Base idea for the "minimal template".
-- [Phoenix Framework](https://hexdocs.pm/phoenix/directory_structure.html). Base idea for the "full template".
-- [Gleam](https://gleam.run/writing-gleam/). Base idea for the `project.ini`.
-
-### project.odin
-
-
-### lib/
-
-A directory that holds your application source code. It's required by the _Draupnir_ template convention.

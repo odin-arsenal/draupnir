@@ -91,7 +91,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Draupnir Templates</li><li class="chapter-item expanded "><a href="About.html"><strong aria-hidden="true">1.</strong> About</a></li><li class="chapter-item expanded affix "><li class="part-title">Templates</li><li class="chapter-item expanded "><a href="BlankTemplate.html"><strong aria-hidden="true">2.</strong> Blank Template</a></li><li class="chapter-item expanded "><a href="MinimalTemplate.html" class="active"><strong aria-hidden="true">3.</strong> Minimal Template</a></li><li class="chapter-item expanded "><a href="FullTemplate.html"><strong aria-hidden="true">4.</strong> Full Template</a></li><li class="chapter-item expanded affix "><li class="part-title">Articles</li><li class="chapter-item expanded "><a href="StructuringProjects.html"><strong aria-hidden="true">5.</strong> Structuring Odin Projects</a></li><li class="chapter-item expanded affix "><li class="part-title">Authors</li><li class="chapter-item expanded "><a href="License.html"><strong aria-hidden="true">6.</strong> License</a></li><li class="chapter-item expanded "><a href="Credits.html"><strong aria-hidden="true">7.</strong> Credits</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Draupnir Templates</li><li class="chapter-item expanded "><a href="About.html"><strong aria-hidden="true">1.</strong> About</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="License.html"><strong aria-hidden="true">1.1.</strong> License</a></li><li class="chapter-item expanded "><a href="Credits.html"><strong aria-hidden="true">1.2.</strong> Credits</a></li></ol></li><li class="chapter-item expanded "><a href="Conventions.html"><strong aria-hidden="true">2.</strong> Why adopt Draupnir Conventions?</a></li><li class="chapter-item expanded affix "><li class="part-title">Templates</li><li class="chapter-item expanded "><a href="BlankTemplate.html"><strong aria-hidden="true">3.</strong> Blank Template</a></li><li class="chapter-item expanded "><a href="MinimalTemplate.html" class="active"><strong aria-hidden="true">4.</strong> Minimal Template</a></li><li class="chapter-item expanded "><a href="FullTemplate.html"><strong aria-hidden="true">5.</strong> Full Template</a></li><li class="chapter-item expanded affix "><li class="part-title">Articles</li><li class="chapter-item expanded "><a href="StructuringProjects.html"><strong aria-hidden="true">6.</strong> Structuring Odin Projects</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -179,16 +179,69 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="minimal-template"><a class="header" href="#minimal-template"><a href="minimal-template">Minimal Template</a></a></h1>
+                        <h1 id="minimal-template"><a class="header" href="#minimal-template"><a href="https://github.com/odin-arsenal/draupnir/tree/main/minimal-template">Minimal Template</a></a></h1>
 <p>This project template have only the minimum directories and files needed for <em>Gungnir</em> (<code>lib</code> and <code>project.odin</code>), so it can generate documentation. Also contains common files such as: <code>.gitignore</code>, <code>.editorconfig</code> and a sample <code>README.md</code> and <code>test</code> directory.</p>
 <h2 id="when-to-use"><a class="header" href="#when-to-use">When to Use?</a></h2>
 <p>Use this template if you want a lean starting point with just a <code>lib</code> and <code>project.odin</code> directories.
-Ideal for experiments, simple applications or want to tailor the structure at will. It includes the <code>run</code> script that enables the <code>-collection:project=.</code> param, and can build <code>debug</code> and <code>release</code> versions of both <code>project.odin</code>.</p>
+Ideal for experiments, simple applications or want to tailor the structure at will. It includes the <code>run</code> script that enables the <code>-collection:project=.</code> param, and can build <code>debug</code> and <code>release</code> versions of <code>project.odin</code>.</p>
 <ul>
-<li><a href="minimal-template">See the contents of the minimal template</a>.</li>
+<li>
+<p>Simple command lines and scripts.</p>
+</li>
+<li>
+<p>Simple libraries.</p>
+</li>
+<li>
+<p>Not many contributors.</p>
+</li>
+<li>
+<p><a href="https://github.com/odin-arsenal/draupnir/tree/main/minimal-template">See the contents of the minimal template</a>.</p>
+</li>
 </ul>
-<h2 id="structure-and-files"><a class="header" href="#structure-and-files">Structure and Files</a></h2>
+<h2 id="instalation"><a class="header" href="#instalation">Instalation</a></h2>
+<pre><code class="language-shell">$ draupnir minimal my-project
+</code></pre>
+<h2 id="structure"><a class="header" href="#structure">Structure</a></h2>
+<p>3 directories, 9 files</p>
+<pre><code class="language-text">.
+├── .editorconfig
+├── .gitattributes
+├── .gitignore
+├── README.md
+├── lib
+│   └── application.odin
+├── project.odin
+├── run
+└── test
+    ├── lib_test.odin
+    └── test_helper.odin
+</code></pre>
 <h2 id="run-script"><a class="header" href="#run-script">Run Script</a></h2>
+<p>The <code>full</code> and <code>minimal</code> templates provides a <a href="run"><em>./run</em></a> script to ease commands:</p>
+<ul>
+<li><code>./run build.debug</code>: Builds the <code>project.odin</code> file in debug mode.</li>
+<li><code>./run build.release</code>: Builds the <code>project.odin</code> file in production mode and store it in <code>bin</code>.</li>
+<li><code>./run project</code>: Runs the <code>project</code> binary. You can pass arguments.</li>
+<li><code>./run version</code>: Builds the <code>debug</code> binary and runs the <code>-v</code> command.</li>
+<li><code>./run format</code>: Runs format and lint in the codebase.</li>
+<li><code>./run docs</code>: Generates documentation using <code>Gungnir</code>.</li>
+<li><code>./run deps.get</code>: Downloads git submodules inside <code>deps</code>.</li>
+<li><code>./run test</code>: Run tests.</li>
+</ul>
+<h2 id="project-collection"><a class="header" href="#project-collection">Project Collection</a></h2>
+<p>The <code>full</code> and <code>minimal</code> templates provides a collection is passed down to <code>odin</code> called <code>project</code>
+that points to the root directory.</p>
+<p><strong>Before</strong></p>
+<pre><code class="language-odin">import "../../../config"
+</code></pre>
+<p><strong>After</strong></p>
+<pre><code class="language-odin">import "project:config"
+</code></pre>
+<h2 id="env-define"><a class="header" href="#env-define">Env Define</a></h2>
+<p>Minimal templates can use a define named <code>env</code> is pass down in build scripts
+that can be used for special setting in different build configurations.</p>
+<pre><code class="language-odin"> #config(env, "dev")
+</code></pre>
 
                     </main>
 

@@ -1,16 +1,100 @@
-# [Full Template](full-template)
+# [Full Template](https://github.com/odin-arsenal/draupnir/tree/main/full-template)
 
 This project template have all the bells and whistles of a complete project: Readmes, Changelogs, dependency directory, docs, private directores, and other directories and files. Normally used in complex applications and command line apps.
 
 ## When to Use?
 
-Use this template if you want a complete project from the start. It provides a good and strong structure for big applications to grow.  It includes the `run` script that enables the `-collection:project=.` param, and can build `debug` and `release` versions of both `project.odin`.
+Use this template if you want a complete application scaffold from the start. It provides a good and strong structure for big applications to grow. It includes the `run` script that enables the `-collection:project=.` param, and can build `debug` and `release` versions of `project.odin`.
 
-- [See the contents of the Full Template](full-template).
+- Big applications.
+- Graphical applications (Games, Desktop, Complex Command lines).
+- Applications that could become bigger over time.
+- Applications that could have many contributors (Open source).
+
+- [See the contents of the Full Template](https://github.com/odin-arsenal/draupnir/tree/main/full-template).
+
+## Instalation
+
+```shell
+$ draupnir full my-project
+```
+
+## Structure
+
+23 directories, 43 files
+
+```text
+.
+├── .editorconfig
+├── .gitattributes
+├── .gitignore
+├── .hooks
+│   ├── Makefile
+│   ├── pre-commit
+│   └── pre-commit.d
+│       └── 01-format-and-lint
+├── .tool-versions
+├── AUTHORS.md
+├── CHANGELOG.md
+├── CONTRIBUTING.md
+├── LICENSE.md
+├── README.md
+├── SUMMARY.md
+├── config
+│   ├── config.odin
+│   └── runtime.odin
+├── deps
+│   └── .gitkeep
+├── docs
+│   └── .gitkeep
+├── lib
+│   ├── application.odin
+│   ├── domain
+│   │   └── domain.odin
+│   ├── lib.docg
+│   │   ├── Example.md
+│   │   ├── SUMMARY.md
+│   │   └── resources
+│   │       └── .gitkeep
+│   └── tasks
+│       ├── options
+│       │   └── options.odin
+│       ├── tasks.odin
+│       └── version
+│           └── task.odin
+├── priv
+│   ├── documentation
+│   │   └── mdbook
+│   │       ├── .gitignore
+│   │       ├── book.toml
+│   │       ├── resources
+│   │       │   └── .gitkeep
+│   │       ├── run
+│   │       └── theme
+│   │           ├── book.js
+│   │           ├── highlight.js
+│   │           └── styles
+│   │               └── github-dark.min.css
+│   ├── logs
+│   │   └── .gitkeep
+│   └── scripts
+│       ├── build-debug
+│       ├── build-release
+│       ├── format
+│       └── test
+├── project.ini
+├── project.odin
+├── resources
+│   └── .gitkeep
+├── run
+└── test
+    ├── lib_test.odin
+    └── test_helper.odin
+```
 
 ## Components
 
-The `full` project contains an additional component called `tasks` which help creating command line apps by parsing the arguments and providing a common structure for running tasks.
+The `full` project contains an additional component called `tasks` which help creating command line apps by parsing the arguments and providing a common structure for running tasks. A common `logger` configuration and a `project.ini` parser.
 
 ### Tasks
 
@@ -34,7 +118,33 @@ run :: proc(args: options.Options) {
 
 ### Logger
 
+Additionally the `full` template comes with a predefined logger inside context.
+It will save inside `priv/logs/console.log` by default.
+
+```odin
+// Start Logger
+log_handle := setup_logger()
+context.logger = log.create_multi_logger(
+  log.create_console_logger(),
+  log.create_file_logger(log_handle),
+)
+```
+
 ### Project configuration (project.ini)
+
+The file `project.ini` is read on main procedure (`project.odin`) and stored it in the shared context. It's values are available
+to all procedures that share the same context. This file is meant to be used by other command line apps
+to gather meta information about the project. Can also be used as settings that an user can modify to give runtime user configurable information. Parsing `ini` files is supported by the core _Odin_ libraries.
+
+```odin
+settings := read_project_settings()
+context.user_ptr = &settings
+```
+
+### mdBook configuration
+
+The project comes with an `mdBook` ready directory including `Odin` highlight configuration.
+You can configure it inside `priv/documentation/mdbook` directory.
 
 
 ## Structure and Files
@@ -42,6 +152,8 @@ run :: proc(args: options.Options) {
 In the `full` project template you can find these files and directories. In `minimal` template just a few of them are present.
 
 - `lib`: A directory that holds your application source code. This directory can be broken into subdirectories (packages).
+
+- `lib/domain`: This is the functional core of the application. Also called the "business logic" or domain of the application. Normally is a group of procedures and definitions representing the data layer, organized into packages.
 
 - `test`: Directory with all of your application tests. It often mirrors the same structure found in `lib`.
 
@@ -83,7 +195,7 @@ In the `full` project template you can find these files and directories. In `min
 - `test/test_helper.odin`: A file to set variables and other global settings for the tests.
 - `test/lib_test.odin`: An example test file.
 
-## Full Run Script
+## Run Script
 
 The `full` and `minimal` templates provides a [_./run_](run) script to ease commands:
 
@@ -99,7 +211,7 @@ The `full` and `minimal` templates provides a [_./run_](run) script to ease comm
 
 ## Project Collection
 
-The `full` and `minimal` templates provides a collection is passed down to `odin` called `project`
+The `full` template provides a collection is passed down to `odin` called `project`
 that points to the root directory.
 
 **Before**
@@ -116,7 +228,7 @@ import "project:config"
 
 ## Env Define
 
-Both `full` and `minimal` templates can use a define named `env` is pass down in build scripts
+The `full` template can use a define named `env` is pass down in build scripts
 that can be used for special setting in different build configurations
 (in full template inside `config/config.odin`).
 

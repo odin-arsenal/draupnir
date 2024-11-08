@@ -92,7 +92,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Draupnir Templates</li><li class="chapter-item expanded "><a href="About.html"><strong aria-hidden="true">1.</strong> About</a></li><li class="chapter-item expanded affix "><li class="part-title">Templates</li><li class="chapter-item expanded "><a href="BlankTemplate.html"><strong aria-hidden="true">2.</strong> Blank Template</a></li><li class="chapter-item expanded "><a href="MinimalTemplate.html"><strong aria-hidden="true">3.</strong> Minimal Template</a></li><li class="chapter-item expanded "><a href="FullTemplate.html"><strong aria-hidden="true">4.</strong> Full Template</a></li><li class="chapter-item expanded affix "><li class="part-title">Articles</li><li class="chapter-item expanded "><a href="StructuringProjects.html"><strong aria-hidden="true">5.</strong> Structuring Odin Projects</a></li><li class="chapter-item expanded affix "><li class="part-title">Authors</li><li class="chapter-item expanded "><a href="License.html"><strong aria-hidden="true">6.</strong> License</a></li><li class="chapter-item expanded "><a href="Credits.html"><strong aria-hidden="true">7.</strong> Credits</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Draupnir Templates</li><li class="chapter-item expanded "><a href="About.html"><strong aria-hidden="true">1.</strong> About</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="License.html"><strong aria-hidden="true">1.1.</strong> License</a></li><li class="chapter-item expanded "><a href="Credits.html"><strong aria-hidden="true">1.2.</strong> Credits</a></li></ol></li><li class="chapter-item expanded "><a href="Conventions.html"><strong aria-hidden="true">2.</strong> Why adopt Draupnir Conventions?</a></li><li class="chapter-item expanded affix "><li class="part-title">Templates</li><li class="chapter-item expanded "><a href="BlankTemplate.html"><strong aria-hidden="true">3.</strong> Blank Template</a></li><li class="chapter-item expanded "><a href="MinimalTemplate.html"><strong aria-hidden="true">4.</strong> Minimal Template</a></li><li class="chapter-item expanded "><a href="FullTemplate.html"><strong aria-hidden="true">5.</strong> Full Template</a></li><li class="chapter-item expanded affix "><li class="part-title">Articles</li><li class="chapter-item expanded "><a href="StructuringProjects.html"><strong aria-hidden="true">6.</strong> Structuring Odin Projects</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -214,7 +214,38 @@ $ cp draupnir /usr/local/bin
 $ draupnir minimal my-new-project
 $ draupnir blank my-new-project
 </code></pre>
-<h2 id="why-use-draupnir-templates"><a class="header" href="#why-use-draupnir-templates">Why use Draupnir Templates?</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="modified-bsd-license"><a class="header" href="#modified-bsd-license">Modified BSD License</a></h1>
+<p><em>Copyright ©, <code>Ninjas.cl</code></em>
+<em>All rights reserved.</em></p>
+<p>Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:</p>
+<ol>
+<li>Redistributions of source code must retain the above copyright
+notice, this list of conditions and the following disclaimer.</li>
+<li>Redistributions in binary form must reproduce the above copyright
+notice, this list of conditions and the following disclaimer in the
+documentation and/or other materials provided with the distribution.</li>
+<li>Neither the name of the <code>Ninjas.cl</code> nor the
+names of its contributors may be used to endorse or promote products
+derived from this software without specific prior written permission.</li>
+</ol>
+<p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS “AS IS” AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL <code>Ninjas.cl</code> BE LIABLE FOR ANY
+DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="credits"><a class="header" href="#credits">Credits</a></h1>
+<p>
+  Made with <i class="fa fa-heart">&#9829;</i> by
+  <a href="https://ninjas.cl">
+    Ninjas.cl
+  </a>.
+</p><div style="break-before: page; page-break-before: always;"></div><h2 id="why-use-draupnir-templates"><a class="header" href="#why-use-draupnir-templates">Why use Draupnir Templates?</a></h2>
 <p>These templates have in common the <code>project.odin</code> file and the <code>lib</code> directory. These are the core structures that a <em>Draupnir</em> template requires. Following this convention, many tools can have a common standard and help the community understand quicker and better <em>Odin</em> codebases. For example the <a href="https://github.com/odin-arsenal/gungnir"><code>Gungnir</code></a> tool can assume the codebase contains at minimum a <code>project.odin</code> file and a <code>lib</code> directory and start searching for files to document inside the <code>lib</code> directory. This convention simplifies many decisions and make tools more thoughtful and friendly.</p>
 <h3 id="where-this-convention-comes-from"><a class="header" href="#where-this-convention-comes-from">Where this convention comes from?</a></h3>
 <p>This convention takes inspiration and ideas from battle tested projects found in other languages and tools such as:</p>
@@ -226,33 +257,186 @@ $ draupnir blank my-new-project
 <h3 id="projectodin"><a class="header" href="#projectodin">project.odin</a></h3>
 <h3 id="lib"><a class="header" href="#lib">lib/</a></h3>
 <p>A directory that holds your application source code. It’s required by the <em>Draupnir</em> template convention.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="blank-template"><a class="header" href="#blank-template"><a href="blank-template">Blank Template</a></a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="blank-template"><a class="header" href="#blank-template"><a href="https://github.com/odin-arsenal/draupnir/tree/main/blank-template">Blank Template</a></a></h1>
 <p>This project template only contains: <code>lib/</code>, <code>project.odin</code>, <code>.gitignore</code> and <code>README.md</code>.
 It’s the most lean possible template compatible with <em>Gungnir</em>. Besides the <code>lib</code> and <code>project.odin</code> directories
 is up to you to set the contents and structure of the project.</p>
+<h2 id="when-to-use"><a class="header" href="#when-to-use">When to use?</a></h2>
+<p>Use this template if you want the bare minimun required to be a <em>Draupnir</em> template.</p>
 <ul>
-<li><a href="blank-template">See the contents of a blank template</a>.</li>
+<li>The most barebones template. Only <code>project.odin</code> and <code>lib/</code> directory.</li>
+<li><a href="https://github.com/odin-arsenal/draupnir/tree/main/blank-template">See the contents of a blank template</a>.</li>
 </ul>
-<h2 id="structure-and-files"><a class="header" href="#structure-and-files">Structure and Files</a></h2>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="minimal-template"><a class="header" href="#minimal-template"><a href="minimal-template">Minimal Template</a></a></h1>
+<h2 id="instalation"><a class="header" href="#instalation">Instalation</a></h2>
+<pre><code class="language-shell">$ draupnir blank my-project
+</code></pre>
+<h2 id="structure"><a class="header" href="#structure">Structure</a></h2>
+<p>2 directories, 4 files</p>
+<pre><code class="language-text">.
+├── .gitignore
+├── README.md
+├── lib
+│   └── .gitkeep
+└── project.odin
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="minimal-template"><a class="header" href="#minimal-template"><a href="https://github.com/odin-arsenal/draupnir/tree/main/minimal-template">Minimal Template</a></a></h1>
 <p>This project template have only the minimum directories and files needed for <em>Gungnir</em> (<code>lib</code> and <code>project.odin</code>), so it can generate documentation. Also contains common files such as: <code>.gitignore</code>, <code>.editorconfig</code> and a sample <code>README.md</code> and <code>test</code> directory.</p>
-<h2 id="when-to-use"><a class="header" href="#when-to-use">When to Use?</a></h2>
-<p>Use this template if you want a lean starting point with just a <code>lib</code> and <code>project.odin</code> directories.
-Ideal for experiments, simple applications or want to tailor the structure at will. It includes the <code>run</code> script that enables the <code>-collection:project=.</code> param, and can build <code>debug</code> and <code>release</code> versions of both <code>project.odin</code>.</p>
-<ul>
-<li><a href="minimal-template">See the contents of the minimal template</a>.</li>
-</ul>
-<h2 id="structure-and-files-1"><a class="header" href="#structure-and-files-1">Structure and Files</a></h2>
-<h2 id="run-script"><a class="header" href="#run-script">Run Script</a></h2>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="full-template"><a class="header" href="#full-template"><a href="full-template">Full Template</a></a></h1>
-<p>This project template have all the bells and whistles of a complete project: Readmes, Changelogs, dependency directory, docs, private directores, and other directories and files. Normally used in complex applications and command line apps.</p>
 <h2 id="when-to-use-1"><a class="header" href="#when-to-use-1">When to Use?</a></h2>
-<p>Use this template if you want a complete project from the start. It provides a good and strong structure for big applications to grow.  It includes the <code>run</code> script that enables the <code>-collection:project=.</code> param, and can build <code>debug</code> and <code>release</code> versions of both <code>project.odin</code>.</p>
+<p>Use this template if you want a lean starting point with just a <code>lib</code> and <code>project.odin</code> directories.
+Ideal for experiments, simple applications or want to tailor the structure at will. It includes the <code>run</code> script that enables the <code>-collection:project=.</code> param, and can build <code>debug</code> and <code>release</code> versions of <code>project.odin</code>.</p>
 <ul>
-<li><a href="full-template">See the contents of the Full Template</a>.</li>
+<li>
+<p>Simple command lines and scripts.</p>
+</li>
+<li>
+<p>Simple libraries.</p>
+</li>
+<li>
+<p>Not many contributors.</p>
+</li>
+<li>
+<p><a href="https://github.com/odin-arsenal/draupnir/tree/main/minimal-template">See the contents of the minimal template</a>.</p>
+</li>
 </ul>
+<h2 id="instalation-1"><a class="header" href="#instalation-1">Instalation</a></h2>
+<pre><code class="language-shell">$ draupnir minimal my-project
+</code></pre>
+<h2 id="structure-1"><a class="header" href="#structure-1">Structure</a></h2>
+<p>3 directories, 9 files</p>
+<pre><code class="language-text">.
+├── .editorconfig
+├── .gitattributes
+├── .gitignore
+├── README.md
+├── lib
+│   └── application.odin
+├── project.odin
+├── run
+└── test
+    ├── lib_test.odin
+    └── test_helper.odin
+</code></pre>
+<h2 id="run-script"><a class="header" href="#run-script">Run Script</a></h2>
+<p>The <code>full</code> and <code>minimal</code> templates provides a <a href="run"><em>./run</em></a> script to ease commands:</p>
+<ul>
+<li><code>./run build.debug</code>: Builds the <code>project.odin</code> file in debug mode.</li>
+<li><code>./run build.release</code>: Builds the <code>project.odin</code> file in production mode and store it in <code>bin</code>.</li>
+<li><code>./run project</code>: Runs the <code>project</code> binary. You can pass arguments.</li>
+<li><code>./run version</code>: Builds the <code>debug</code> binary and runs the <code>-v</code> command.</li>
+<li><code>./run format</code>: Runs format and lint in the codebase.</li>
+<li><code>./run docs</code>: Generates documentation using <code>Gungnir</code>.</li>
+<li><code>./run deps.get</code>: Downloads git submodules inside <code>deps</code>.</li>
+<li><code>./run test</code>: Run tests.</li>
+</ul>
+<h2 id="project-collection"><a class="header" href="#project-collection">Project Collection</a></h2>
+<p>The <code>full</code> and <code>minimal</code> templates provides a collection is passed down to <code>odin</code> called <code>project</code>
+that points to the root directory.</p>
+<p><strong>Before</strong></p>
+<pre><code class="language-odin">import "../../../config"
+</code></pre>
+<p><strong>After</strong></p>
+<pre><code class="language-odin">import "project:config"
+</code></pre>
+<h2 id="env-define"><a class="header" href="#env-define">Env Define</a></h2>
+<p>Minimal templates can use a define named <code>env</code> is pass down in build scripts
+that can be used for special setting in different build configurations.</p>
+<pre><code class="language-odin"> #config(env, "dev")
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="full-template"><a class="header" href="#full-template"><a href="https://github.com/odin-arsenal/draupnir/tree/main/full-template">Full Template</a></a></h1>
+<p>This project template have all the bells and whistles of a complete project: Readmes, Changelogs, dependency directory, docs, private directores, and other directories and files. Normally used in complex applications and command line apps.</p>
+<h2 id="when-to-use-2"><a class="header" href="#when-to-use-2">When to Use?</a></h2>
+<p>Use this template if you want a complete project from the start. It provides a good and strong structure for big applications to grow.  It includes the <code>run</code> script that enables the <code>-collection:project=.</code> param, and can build <code>debug</code> and <code>release</code> versions of <code>project.odin</code>.</p>
+<ul>
+<li>
+<p>Big applications.</p>
+</li>
+<li>
+<p>Graphical applications (Games, Desktop, Complex Command lines).</p>
+</li>
+<li>
+<p>Applications that could become bigger over time.</p>
+</li>
+<li>
+<p>Applications that could have many contributors (Open source).</p>
+</li>
+<li>
+<p><a href="https://github.com/odin-arsenal/draupnir/tree/main/full-template">See the contents of the Full Template</a>.</p>
+</li>
+</ul>
+<h2 id="instalation-2"><a class="header" href="#instalation-2">Instalation</a></h2>
+<pre><code class="language-shell">$ draupnir full my-project
+</code></pre>
+<h2 id="structure-2"><a class="header" href="#structure-2">Structure</a></h2>
+<p>23 directories, 43 files</p>
+<pre><code class="language-text">.
+├── .editorconfig
+├── .gitattributes
+├── .gitignore
+├── .hooks
+│   ├── Makefile
+│   ├── pre-commit
+│   └── pre-commit.d
+│       └── 01-format-and-lint
+├── .tool-versions
+├── AUTHORS.md
+├── CHANGELOG.md
+├── CONTRIBUTING.md
+├── LICENSE.md
+├── README.md
+├── SUMMARY.md
+├── config
+│   ├── config.odin
+│   └── runtime.odin
+├── deps
+│   └── .gitkeep
+├── docs
+│   └── .gitkeep
+├── lib
+│   ├── application.odin
+│   ├── core
+│   │   └── core.odin
+│   ├── lib.docg
+│   │   ├── Example.md
+│   │   ├── SUMMARY.md
+│   │   └── resources
+│   │       └── .gitkeep
+│   └── tasks
+│       ├── options
+│       │   └── options.odin
+│       ├── tasks.odin
+│       └── version
+│           └── task.odin
+├── priv
+│   ├── documentation
+│   │   └── mdbook
+│   │       ├── .gitignore
+│   │       ├── book.toml
+│   │       ├── resources
+│   │       │   └── .gitkeep
+│   │       ├── run
+│   │       └── theme
+│   │           ├── book.js
+│   │           ├── highlight.js
+│   │           └── styles
+│   │               └── github-dark.min.css
+│   ├── logs
+│   │   └── .gitkeep
+│   └── scripts
+│       ├── build-debug
+│       ├── build-release
+│       ├── format
+│       └── test
+├── project.ini
+├── project.odin
+├── resources
+│   └── .gitkeep
+├── run
+└── test
+    ├── lib_test.odin
+    └── test_helper.odin
+</code></pre>
 <h2 id="components"><a class="header" href="#components">Components</a></h2>
-<p>The <code>full</code> project contains an additional component called <code>tasks</code> which help creating command line apps by parsing the arguments and providing a common structure for running tasks.</p>
+<p>The <code>full</code> project contains an additional component called <code>tasks</code> which help creating command line apps by parsing the arguments and providing a common structure for running tasks. A common <code>logger</code> configuration and a <code>project.ini</code> parser.</p>
 <h3 id="tasks"><a class="header" href="#tasks">Tasks</a></h3>
 <p>A task can be defined by creating a new package inside <code>lib/tasks</code>, and which defines the <code>run</code> procedure.
 The <code>run</code> procedure will receive a list of all command line arguments passed, according to the user’s terminal.
@@ -269,8 +453,23 @@ run :: proc(args: options.Options) {
 }
 </code></pre>
 <h3 id="logger"><a class="header" href="#logger">Logger</a></h3>
+<p>Additionally the <code>full</code> template comes with a predefined logger inside context.
+It will save inside <code>priv/logs/console.log</code> by default.</p>
+<pre><code class="language-odin">// Start Logger
+log_handle := setup_logger()
+context.logger = log.create_multi_logger(
+  log.create_console_logger(),
+  log.create_file_logger(log_handle),
+)
+</code></pre>
 <h3 id="project-configuration-projectini"><a class="header" href="#project-configuration-projectini">Project configuration (project.ini)</a></h3>
-<h2 id="structure-and-files-2"><a class="header" href="#structure-and-files-2">Structure and Files</a></h2>
+<p>The file <code>project.ini</code> is read on main procedure (<code>project.odin</code>) and stored it in the shared context. It’s values are available
+to all procedures that share the same context. This file is meant to be used by other command line apps
+to gather meta information about the project. Can also be used as settings that an user can modify to give runtime user configurable information. Parsing <code>ini</code> files is supported by the core <em>Odin</em> libraries.</p>
+<pre><code class="language-odin">settings := read_project_settings()
+context.user_ptr = &amp;settings
+</code></pre>
+<h2 id="structure-and-files"><a class="header" href="#structure-and-files">Structure and Files</a></h2>
 <p>In the <code>full</code> project template you can find these files and directories. In <code>minimal</code> template just a few of them are present.</p>
 <ul>
 <li>
@@ -355,7 +554,7 @@ run :: proc(args: options.Options) {
 <p><code>test/lib_test.odin</code>: An example test file.</p>
 </li>
 </ul>
-<h2 id="full-run-script"><a class="header" href="#full-run-script">Full Run Script</a></h2>
+<h2 id="run-script-1"><a class="header" href="#run-script-1">Run Script</a></h2>
 <p>The <code>full</code> and <code>minimal</code> templates provides a <a href="run"><em>./run</em></a> script to ease commands:</p>
 <ul>
 <li><code>./run build.debug</code>: Builds the <code>project.odin</code> file in debug mode.</li>
@@ -368,8 +567,8 @@ run :: proc(args: options.Options) {
 <li><code>./run deps.get</code>: Downloads git submodules inside <code>deps</code>.</li>
 <li><code>./run test</code>: Run tests.</li>
 </ul>
-<h2 id="project-collection"><a class="header" href="#project-collection">Project Collection</a></h2>
-<p>The <code>full</code> and <code>minimal</code> templates provides a collection is passed down to <code>odin</code> called <code>project</code>
+<h2 id="project-collection-1"><a class="header" href="#project-collection-1">Project Collection</a></h2>
+<p>The <code>full</code> template provides a collection is passed down to <code>odin</code> called <code>project</code>
 that points to the root directory.</p>
 <p><strong>Before</strong></p>
 <pre><code class="language-odin">import "../../../config"
@@ -377,8 +576,8 @@ that points to the root directory.</p>
 <p><strong>After</strong></p>
 <pre><code class="language-odin">import "project:config"
 </code></pre>
-<h2 id="env-define"><a class="header" href="#env-define">Env Define</a></h2>
-<p>Both <code>full</code> and <code>minimal</code> templates can use a define named <code>env</code> is pass down in build scripts
+<h2 id="env-define-1"><a class="header" href="#env-define-1">Env Define</a></h2>
+<p>The <code>full</code> template can use a define named <code>env</code> is pass down in build scripts
 that can be used for special setting in different build configurations
 (in full template inside <code>config/config.odin</code>).</p>
 <pre><code class="language-odin">when ENVIRONMENT == "dev" {
@@ -423,38 +622,7 @@ when ENVIRONMENT == "test" {
 </code></pre>
 <p>And the package is named <code>Project_User_Controller</code>, and not <code>Project_Controllers_User_Controller</code>.</p>
 <p>The convention for naming packages is using <code>CamelCase</code> and separate each word with underscore.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="modified-bsd-license"><a class="header" href="#modified-bsd-license">Modified BSD License</a></h1>
-<p><em>Copyright ©, <code>Ninjas.cl</code></em>
-<em>All rights reserved.</em></p>
-<p>Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are met:</p>
-<ol>
-<li>Redistributions of source code must retain the above copyright
-notice, this list of conditions and the following disclaimer.</li>
-<li>Redistributions in binary form must reproduce the above copyright
-notice, this list of conditions and the following disclaimer in the
-documentation and/or other materials provided with the distribution.</li>
-<li>Neither the name of the <code>Ninjas.cl</code> nor the
-names of its contributors may be used to endorse or promote products
-derived from this software without specific prior written permission.</li>
-</ol>
-<p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS “AS IS” AND
-ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL <code>Ninjas.cl</code> BE LIABLE FOR ANY
-DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
-ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="credits"><a class="header" href="#credits">Credits</a></h1>
-<p>
-  Made with <i class="fa fa-heart">&#9829;</i> by
-  <a href="https://ninjas.cl">
-    Ninjas.cl
-  </a>.
-</p>
+
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">

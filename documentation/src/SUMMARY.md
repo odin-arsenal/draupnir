@@ -3,6 +3,9 @@
 # Draupnir Templates
 
 - [About](./About.md)
+    - [License](./License.md)
+    - [Credits](./Credits.md)
+- [Why adopt Draupnir Conventions?](./Conventions.md)
 
 # Templates
 
@@ -13,8 +16,3 @@
 # Articles
 
 - [Structuring Odin Projects](./StructuringProjects.md)
-
-# Authors
-
-- [License](./License.md)
-- [Credits](./Credits.md)

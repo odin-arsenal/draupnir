@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>License - Draupnir Templates</title>
+        <title>Why adopt Draupnir Conventions? - Draupnir Templates</title>
 
 
         <!-- Custom HTML head -->
@@ -91,7 +91,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Draupnir Templates</li><li class="chapter-item expanded "><a href="About.html"><strong aria-hidden="true">1.</strong> About</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="License.html" class="active"><strong aria-hidden="true">1.1.</strong> License</a></li><li class="chapter-item expanded "><a href="Credits.html"><strong aria-hidden="true">1.2.</strong> Credits</a></li></ol></li><li class="chapter-item expanded "><a href="Conventions.html"><strong aria-hidden="true">2.</strong> Why adopt Draupnir Conventions?</a></li><li class="chapter-item expanded affix "><li class="part-title">Templates</li><li class="chapter-item expanded "><a href="BlankTemplate.html"><strong aria-hidden="true">3.</strong> Blank Template</a></li><li class="chapter-item expanded "><a href="MinimalTemplate.html"><strong aria-hidden="true">4.</strong> Minimal Template</a></li><li class="chapter-item expanded "><a href="FullTemplate.html"><strong aria-hidden="true">5.</strong> Full Template</a></li><li class="chapter-item expanded affix "><li class="part-title">Articles</li><li class="chapter-item expanded "><a href="StructuringProjects.html"><strong aria-hidden="true">6.</strong> Structuring Odin Projects</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Draupnir Templates</li><li class="chapter-item expanded "><a href="About.html"><strong aria-hidden="true">1.</strong> About</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="License.html"><strong aria-hidden="true">1.1.</strong> License</a></li><li class="chapter-item expanded "><a href="Credits.html"><strong aria-hidden="true">1.2.</strong> Credits</a></li></ol></li><li class="chapter-item expanded "><a href="Conventions.html" class="active"><strong aria-hidden="true">2.</strong> Why adopt Draupnir Conventions?</a></li><li class="chapter-item expanded affix "><li class="part-title">Templates</li><li class="chapter-item expanded "><a href="BlankTemplate.html"><strong aria-hidden="true">3.</strong> Blank Template</a></li><li class="chapter-item expanded "><a href="MinimalTemplate.html"><strong aria-hidden="true">4.</strong> Minimal Template</a></li><li class="chapter-item expanded "><a href="FullTemplate.html"><strong aria-hidden="true">5.</strong> Full Template</a></li><li class="chapter-item expanded affix "><li class="part-title">Articles</li><li class="chapter-item expanded "><a href="StructuringProjects.html"><strong aria-hidden="true">6.</strong> Structuring Odin Projects</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -179,41 +179,28 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="modified-bsd-license"><a class="header" href="#modified-bsd-license">Modified BSD License</a></h1>
-<p><em>Copyright ©, <code>Ninjas.cl</code></em>
-<em>All rights reserved.</em></p>
-<p>Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are met:</p>
-<ol>
-<li>Redistributions of source code must retain the above copyright
-notice, this list of conditions and the following disclaimer.</li>
-<li>Redistributions in binary form must reproduce the above copyright
-notice, this list of conditions and the following disclaimer in the
-documentation and/or other materials provided with the distribution.</li>
-<li>Neither the name of the <code>Ninjas.cl</code> nor the
-names of its contributors may be used to endorse or promote products
-derived from this software without specific prior written permission.</li>
-</ol>
-<p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS “AS IS” AND
-ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL <code>Ninjas.cl</code> BE LIABLE FOR ANY
-DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
-ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
+                        <h2 id="why-use-draupnir-templates"><a class="header" href="#why-use-draupnir-templates">Why use Draupnir Templates?</a></h2>
+<p>These templates have in common the <code>project.odin</code> file and the <code>lib</code> directory. These are the core structures that a <em>Draupnir</em> template requires. Following this convention, many tools can have a common standard and help the community understand quicker and better <em>Odin</em> codebases. For example the <a href="https://github.com/odin-arsenal/gungnir"><code>Gungnir</code></a> tool can assume the codebase contains at minimum a <code>project.odin</code> file and a <code>lib</code> directory and start searching for files to document inside the <code>lib</code> directory. This convention simplifies many decisions and make tools more thoughtful and friendly.</p>
+<h3 id="where-this-convention-comes-from"><a class="header" href="#where-this-convention-comes-from">Where this convention comes from?</a></h3>
+<p>This convention takes inspiration and ideas from battle tested projects found in other languages and tools such as:</p>
+<ul>
+<li><a href="https://hexdocs.pm/elixir/introduction-to-mix.html#our-first-project">Elixir Mix</a>. Base idea for the “minimal template”.</li>
+<li><a href="https://hexdocs.pm/phoenix/directory_structure.html">Phoenix Framework</a>. Base idea for the “full template”.</li>
+<li><a href="https://gleam.run/writing-gleam/">Gleam</a>. Base idea for the <code>project.ini</code>.</li>
+</ul>
+<h3 id="projectodin"><a class="header" href="#projectodin">project.odin</a></h3>
+<h3 id="lib"><a class="header" href="#lib">lib/</a></h3>
+<p>A directory that holds your application source code. It’s required by the <em>Draupnir</em> template convention.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="About.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="Credits.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="Credits.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="BlankTemplate.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -223,11 +210,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="About.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="Credits.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="Credits.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="BlankTemplate.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

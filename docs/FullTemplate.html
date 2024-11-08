@@ -91,7 +91,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Draupnir Templates</li><li class="chapter-item expanded "><a href="About.html"><strong aria-hidden="true">1.</strong> About</a></li><li class="chapter-item expanded affix "><li class="part-title">Templates</li><li class="chapter-item expanded "><a href="BlankTemplate.html"><strong aria-hidden="true">2.</strong> Blank Template</a></li><li class="chapter-item expanded "><a href="MinimalTemplate.html"><strong aria-hidden="true">3.</strong> Minimal Template</a></li><li class="chapter-item expanded "><a href="FullTemplate.html" class="active"><strong aria-hidden="true">4.</strong> Full Template</a></li><li class="chapter-item expanded affix "><li class="part-title">Articles</li><li class="chapter-item expanded "><a href="StructuringProjects.html"><strong aria-hidden="true">5.</strong> Structuring Odin Projects</a></li><li class="chapter-item expanded affix "><li class="part-title">Authors</li><li class="chapter-item expanded "><a href="License.html"><strong aria-hidden="true">6.</strong> License</a></li><li class="chapter-item expanded "><a href="Credits.html"><strong aria-hidden="true">7.</strong> Credits</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Draupnir Templates</li><li class="chapter-item expanded "><a href="About.html"><strong aria-hidden="true">1.</strong> About</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="License.html"><strong aria-hidden="true">1.1.</strong> License</a></li><li class="chapter-item expanded "><a href="Credits.html"><strong aria-hidden="true">1.2.</strong> Credits</a></li></ol></li><li class="chapter-item expanded "><a href="Conventions.html"><strong aria-hidden="true">2.</strong> Why adopt Draupnir Conventions?</a></li><li class="chapter-item expanded affix "><li class="part-title">Templates</li><li class="chapter-item expanded "><a href="BlankTemplate.html"><strong aria-hidden="true">3.</strong> Blank Template</a></li><li class="chapter-item expanded "><a href="MinimalTemplate.html"><strong aria-hidden="true">4.</strong> Minimal Template</a></li><li class="chapter-item expanded "><a href="FullTemplate.html" class="active"><strong aria-hidden="true">5.</strong> Full Template</a></li><li class="chapter-item expanded affix "><li class="part-title">Articles</li><li class="chapter-item expanded "><a href="StructuringProjects.html"><strong aria-hidden="true">6.</strong> Structuring Odin Projects</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -179,15 +179,101 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="full-template"><a class="header" href="#full-template"><a href="full-template">Full Template</a></a></h1>
+                        <h1 id="full-template"><a class="header" href="#full-template"><a href="https://github.com/odin-arsenal/draupnir/tree/main/full-template">Full Template</a></a></h1>
 <p>This project template have all the bells and whistles of a complete project: Readmes, Changelogs, dependency directory, docs, private directores, and other directories and files. Normally used in complex applications and command line apps.</p>
 <h2 id="when-to-use"><a class="header" href="#when-to-use">When to Use?</a></h2>
-<p>Use this template if you want a complete project from the start. It provides a good and strong structure for big applications to grow.  It includes the <code>run</code> script that enables the <code>-collection:project=.</code> param, and can build <code>debug</code> and <code>release</code> versions of both <code>project.odin</code>.</p>
+<p>Use this template if you want a complete project from the start. It provides a good and strong structure for big applications to grow.  It includes the <code>run</code> script that enables the <code>-collection:project=.</code> param, and can build <code>debug</code> and <code>release</code> versions of <code>project.odin</code>.</p>
 <ul>
-<li><a href="full-template">See the contents of the Full Template</a>.</li>
+<li>
+<p>Big applications.</p>
+</li>
+<li>
+<p>Graphical applications (Games, Desktop, Complex Command lines).</p>
+</li>
+<li>
+<p>Applications that could become bigger over time.</p>
+</li>
+<li>
+<p>Applications that could have many contributors (Open source).</p>
+</li>
+<li>
+<p><a href="https://github.com/odin-arsenal/draupnir/tree/main/full-template">See the contents of the Full Template</a>.</p>
+</li>
 </ul>
+<h2 id="instalation"><a class="header" href="#instalation">Instalation</a></h2>
+<pre><code class="language-shell">$ draupnir full my-project
+</code></pre>
+<h2 id="structure"><a class="header" href="#structure">Structure</a></h2>
+<p>23 directories, 43 files</p>
+<pre><code class="language-text">.
+├── .editorconfig
+├── .gitattributes
+├── .gitignore
+├── .hooks
+│   ├── Makefile
+│   ├── pre-commit
+│   └── pre-commit.d
+│       └── 01-format-and-lint
+├── .tool-versions
+├── AUTHORS.md
+├── CHANGELOG.md
+├── CONTRIBUTING.md
+├── LICENSE.md
+├── README.md
+├── SUMMARY.md
+├── config
+│   ├── config.odin
+│   └── runtime.odin
+├── deps
+│   └── .gitkeep
+├── docs
+│   └── .gitkeep
+├── lib
+│   ├── application.odin
+│   ├── core
+│   │   └── core.odin
+│   ├── lib.docg
+│   │   ├── Example.md
+│   │   ├── SUMMARY.md
+│   │   └── resources
+│   │       └── .gitkeep
+│   └── tasks
+│       ├── options
+│       │   └── options.odin
+│       ├── tasks.odin
+│       └── version
+│           └── task.odin
+├── priv
+│   ├── documentation
+│   │   └── mdbook
+│   │       ├── .gitignore
+│   │       ├── book.toml
+│   │       ├── resources
+│   │       │   └── .gitkeep
+│   │       ├── run
+│   │       └── theme
+│   │           ├── book.js
+│   │           ├── highlight.js
+│   │           └── styles
+│   │               └── github-dark.min.css
+│   ├── logs
+│   │   └── .gitkeep
+│   └── scripts
+│       ├── build-debug
+│       ├── build-release
+│       ├── format
+│       └── test
+├── project.ini
+├── project.odin
+├── resources
+│   └── .gitkeep
+├── run
+└── test
+    ├── lib_test.odin
+    └── test_helper.odin
+</code></pre>
 <h2 id="components"><a class="header" href="#components">Components</a></h2>
-<p>The <code>full</code> project contains an additional component called <code>tasks</code> which help creating command line apps by parsing the arguments and providing a common structure for running tasks.</p>
+<p>The <code>full</code> project contains an additional component called <code>tasks</code> which help creating command line apps by parsing the arguments and providing a common structure for running tasks. A common <code>logger</code> configuration and a <code>project.ini</code> parser.</p>
 <h3 id="tasks"><a class="header" href="#tasks">Tasks</a></h3>
 <p>A task can be defined by creating a new package inside <code>lib/tasks</code>, and which defines the <code>run</code> procedure.
 The <code>run</code> procedure will receive a list of all command line arguments passed, according to the user’s terminal.
@@ -204,7 +290,22 @@ run :: proc(args: options.Options) {
 }
 </code></pre>
 <h3 id="logger"><a class="header" href="#logger">Logger</a></h3>
+<p>Additionally the <code>full</code> template comes with a predefined logger inside context.
+It will save inside <code>priv/logs/console.log</code> by default.</p>
+<pre><code class="language-odin">// Start Logger
+log_handle := setup_logger()
+context.logger = log.create_multi_logger(
+  log.create_console_logger(),
+  log.create_file_logger(log_handle),
+)
+</code></pre>
 <h3 id="project-configuration-projectini"><a class="header" href="#project-configuration-projectini">Project configuration (project.ini)</a></h3>
+<p>The file <code>project.ini</code> is read on main procedure (<code>project.odin</code>) and stored it in the shared context. It’s values are available
+to all procedures that share the same context. This file is meant to be used by other command line apps
+to gather meta information about the project. Can also be used as settings that an user can modify to give runtime user configurable information. Parsing <code>ini</code> files is supported by the core <em>Odin</em> libraries.</p>
+<pre><code class="language-odin">settings := read_project_settings()
+context.user_ptr = &amp;settings
+</code></pre>
 <h2 id="structure-and-files"><a class="header" href="#structure-and-files">Structure and Files</a></h2>
 <p>In the <code>full</code> project template you can find these files and directories. In <code>minimal</code> template just a few of them are present.</p>
 <ul>
@@ -290,7 +391,7 @@ run :: proc(args: options.Options) {
 <p><code>test/lib_test.odin</code>: An example test file.</p>
 </li>
 </ul>
-<h2 id="full-run-script"><a class="header" href="#full-run-script">Full Run Script</a></h2>
+<h2 id="run-script"><a class="header" href="#run-script">Run Script</a></h2>
 <p>The <code>full</code> and <code>minimal</code> templates provides a <a href="run"><em>./run</em></a> script to ease commands:</p>
 <ul>
 <li><code>./run build.debug</code>: Builds the <code>project.odin</code> file in debug mode.</li>
@@ -304,7 +405,7 @@ run :: proc(args: options.Options) {
 <li><code>./run test</code>: Run tests.</li>
 </ul>
 <h2 id="project-collection"><a class="header" href="#project-collection">Project Collection</a></h2>
-<p>The <code>full</code> and <code>minimal</code> templates provides a collection is passed down to <code>odin</code> called <code>project</code>
+<p>The <code>full</code> template provides a collection is passed down to <code>odin</code> called <code>project</code>
 that points to the root directory.</p>
 <p><strong>Before</strong></p>
 <pre><code class="language-odin">import "../../../config"
@@ -313,7 +414,7 @@ that points to the root directory.</p>
 <pre><code class="language-odin">import "project:config"
 </code></pre>
 <h2 id="env-define"><a class="header" href="#env-define">Env Define</a></h2>
-<p>Both <code>full</code> and <code>minimal</code> templates can use a define named <code>env</code> is pass down in build scripts
+<p>The <code>full</code> template can use a define named <code>env</code> is pass down in build scripts
 that can be used for special setting in different build configurations
 (in full template inside <code>config/config.odin</code>).</p>
 <pre><code class="language-odin">when ENVIRONMENT == "dev" {
