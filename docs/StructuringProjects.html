@@ -268,11 +268,104 @@ main :: proc() {
 <p><strong>Example</strong></p>
 <p><em>Odin</em> uses packages, procedures and data types, which allows a way to organize our code in what is called CRCs (Constructors, Reducers, and Converters). So we will have procedures to (create) an accumulator, procedures that will perform operations (reducers) with this accumulator and finally procedures that will transform the accumulator into a final format (converters). This is something that has existed for a long time in different programming languages ​​such as <em>Haskell</em> or <em>Lisp</em>. The most important thing you can do in a language is to unite ideas using composition.
 The idea is to create a pipeline that receives an accumulator as its first parameter and performs a series of reduce operations until reaching the final converter.</p>
-<pre><code class="language-odin">{{#include examples/crc1/crc.odin}}
+<pre><code class="language-odin">package CRC
+
+import "core:fmt"
+
+Person :: struct {
+    name : string,
+    age : int
+}
+
+// Creator
+new_person :: proc(name: string, age: int) -&gt; Person {
+    person : Person
+    person.name = name
+    person.age = age
+    return person
+}
+
+// Reducer
+// We use a new structure to avoid mutating the original parameter
+rejuvenate_person :: proc(person: Person, years: int) -&gt; Person {
+    return new_person(person.name, person.age - years)
+}
+
+// Converter, we only show the value we want to.
+person_to_string :: proc(person: Person) -&gt; (string, string, int) {
+    return "The person %s, now have %d years", person.name, person.age
+}
+
+// Pipeline
+main :: proc() {
+    person := new_person("Camilo", 35)
+    person = rejuvenate_person(person, 10)
+    out, name, age := person_to_string(person)
+    fmt.printfln(out, name, age) // The person Camilo, now have 25 years
+}
 </code></pre>
 <p><strong>Example 2</strong></p>
 <p>Let’s illustrate this a bit using a treasure map. In this map we are going to give a series of directions north, south, east and west. You can see that we have a creation function that returns a <em>Treasure</em> struct {x, y}, which will be our accumulator data structure. Then we have a series of reducers that modify the struct and return a new struct with the appropriate values. Finally we have our converter that returns a String with a final message.</p>
-<pre><code class="language-odin">{{#include examples/crc2/crc.odin}}
+<pre><code class="language-odin">package CRC
+
+import "core:fmt"
+
+Treasure :: struct {
+    x: int,
+    y: int
+}
+
+// Constructors
+new :: proc(x: int, y: int) -&gt; Treasure {
+    treasure : Treasure
+    treasure.x = x
+    treasure.y = y
+    return treasure
+}
+
+empty :: proc() -&gt; Treasure {
+    return new(0, 0)
+}
+
+// Reducers
+north :: proc(treasure : Treasure) -&gt; Treasure {
+    return new(treasure.x, treasure.y - 1)
+}
+
+south :: proc(treasure : Treasure) -&gt; Treasure {
+    return new(treasure.x, treasure.y + 1)
+}
+
+east :: proc(treasure : Treasure) -&gt; Treasure {
+    return new(treasure.x - 1, treasure.y)
+}
+
+west :: proc(treasure : Treasure) -&gt; Treasure {
+    return new(treasure.x + 1, treasure.y)
+}
+
+// Converter
+show :: proc (treasure : Treasure) -&gt; (string, int, int) {
+    return "The treasure is on the coordinates (%d, %d)", treasure.x, treasure.y
+}
+
+// Pipeline
+main :: proc() {
+    treasure := empty() // (0, 0)
+    treasure = north(treasure) // (0, -1)
+    treasure = north(treasure) // (0, -2)
+    treasure = north(treasure) // (0, -3)
+    treasure = north(treasure) // (0, -4)
+    treasure = west(treasure)  // (1, -4)
+    treasure = west(treasure)  // (2, -4)
+    treasure = west(treasure)  // (3, -4)
+    treasure = south(treasure) // (3, -3)
+    treasure = east(treasure)  // (2, -3)
+    treasure = east(treasure)  // (1, -3)
+    treasure = east(treasure)  // (0, -3)
+    out, x, y := show(treasure)
+    fmt.printfln(out, x, y) // The treasure is on the coordinates (0, -3)
+}
 </code></pre>
 <p>We can compare these techniques with the <em>Object Oriented</em> pattern of <em>Command - Query Segregation</em>.
 <em>Bertrand Meyer</em> in his book <a href="https://www.amazon.com/gp/product/0136291554/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0136291554&amp;linkCode=as2&amp;tag=martinfowlerc-20">Object Oriented Software Construction</a> - a book that is one of the most influential OOP books.</p>

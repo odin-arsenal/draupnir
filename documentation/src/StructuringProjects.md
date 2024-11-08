@@ -85,7 +85,7 @@ _Odin_ uses packages, procedures and data types, which allows a way to organize 
 The idea is to create a pipeline that receives an accumulator as its first parameter and performs a series of reduce operations until reaching the final converter.
 
 ```odin
-{{#include examples/crc1/crc.odin}}
+{{#include examples/crc1/example.odin}}
 ```
 
 **Example 2**
@@ -93,7 +93,7 @@ The idea is to create a pipeline that receives an accumulator as its first param
 Let's illustrate this a bit using a treasure map. In this map we are going to give a series of directions north, south, east and west. You can see that we have a creation function that returns a _Treasure_ struct {x, y}, which will be our accumulator data structure. Then we have a series of reducers that modify the struct and return a new struct with the appropriate values. Finally we have our converter that returns a String with a final message.
 
 ```odin
-{{#include examples/crc2/crc.odin}}
+{{#include examples/crc2/example.odin}}
 ```
 
 We can compare these techniques with the _Object Oriented_ pattern of _Command - Query Segregation_.

@@ -25,9 +25,9 @@ function serve {
 }
 
 function deploy {
-    ./run build
-    git add .
-    git commit -m 'updated docs'
+    ./run build && \
+    git add . && \
+    git commit -m 'updated docs' && \
     git push origin main
 }
 
