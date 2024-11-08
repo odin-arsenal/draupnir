@@ -28,7 +28,7 @@ function deploy {
     ./run build && \
     git add . && \
     git commit -m 'updated docs' && \
-    git push origin main
+    git push origin docs
 }
 
 # prints help
