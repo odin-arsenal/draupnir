@@ -24,6 +24,13 @@ function serve {
     cd ..
 }
 
+function deploy {
+    ./run build
+    git add .
+    git commit -m 'updated docs'
+    git push origin main
+}
+
 # prints help
 function help {
     echo "$0 <task> <args>"
