@@ -216,6 +216,31 @@ Ideal for experiments, simple applications or want to tailor the structure at wi
     ├── lib_test.odin
     └── test_helper.odin
 </code></pre>
+<h2 id="structure-and-files"><a class="header" href="#structure-and-files">Structure and Files</a></h2>
+<p>In the <code>full</code> project template you can find these files and directories. In <code>minimal</code> template just a few of them are present.</p>
+<ul>
+<li>
+<p><code>lib</code>: A directory that holds your application source code. This directory can be broken into subdirectories (packages).</p>
+</li>
+<li>
+<p><code>test</code>: Directory with all of your application tests. It often mirrors the same structure found in <code>lib</code>.</p>
+</li>
+<li>
+<p><code>run</code>: A bash script to run helper commands.</p>
+</li>
+<li>
+<p><code>_build</code>:  A directory created by the run command line tool that ships as part of <em>Draupnir</em> that holds all compilation artifacts. This directory must not be checked into version control and it can be removed at any time. Removing it will force the project to rebuild your application from scratch.</p>
+</li>
+<li>
+<p><code>bin</code>:  A directory created by the run command line tool that ships as part of <em>Draupnir</em> that holds all compilation artifacts for <em>Release</em> environment. This directory must not be checked into version control and it can be removed at any time. Removing it will force the project to rebuild your application from scratch.</p>
+</li>
+<li>
+<p><code>test/test_helper.odin</code>: A file to set variables and other global settings for the tests.</p>
+</li>
+<li>
+<p><code>test/lib_test.odin</code>: An example test file.</p>
+</li>
+</ul>
 <h2 id="run-script"><a class="header" href="#run-script">Run Script</a></h2>
 <p>The <code>full</code> and <code>minimal</code> templates provides a <a href="run"><em>./run</em></a> script to ease commands:</p>
 <ul>
@@ -229,7 +254,7 @@ Ideal for experiments, simple applications or want to tailor the structure at wi
 <li><code>./run test</code>: Run tests.</li>
 </ul>
 <h2 id="project-collection"><a class="header" href="#project-collection">Project Collection</a></h2>
-<p>The <code>full</code> and <code>minimal</code> templates provides a collection is passed down to <code>odin</code> called <code>project</code>
+<p>The <code>minimal</code> template provides a collection is passed down to <code>odin</code> called <code>project</code>
 that points to the root directory.</p>
 <p><strong>Before</strong></p>
 <pre><code class="language-odin">import "../../../config"

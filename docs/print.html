@@ -246,17 +246,54 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
     Ninjas.cl
   </a>.
 </p><div style="break-before: page; page-break-before: always;"></div><h2 id="why-use-draupnir-templates"><a class="header" href="#why-use-draupnir-templates">Why use Draupnir Templates?</a></h2>
-<p>These templates have in common the <code>project.odin</code> file and the <code>lib</code> directory. These are the core structures that a <em>Draupnir</em> template requires. Following this convention, many tools can have a common standard and help the community understand quicker and better <em>Odin</em> codebases. For example the <a href="https://github.com/odin-arsenal/gungnir"><code>Gungnir</code></a> tool can assume the codebase contains at minimum a <code>project.odin</code> file and a <code>lib</code> directory and start searching for files to document inside the <code>lib</code> directory. This convention simplifies many decisions and make tools more thoughtful and friendly.</p>
-<h3 id="where-this-convention-comes-from"><a class="header" href="#where-this-convention-comes-from">Where this convention comes from?</a></h3>
+<p>These templates have in common the <code>project.odin</code> file and the <code>lib</code> directory. These are the core structures that a <em>Draupnir</em> template requires. Following these conventions, many tools can have a common standard and help the community understand quicker and better <em>Odin</em> codebases. For example the <a href="https://github.com/odin-arsenal/gungnir"><code>Gungnir</code></a> tool can assume the codebase contains at minimum a <code>project.odin</code> file and a <code>lib</code> directory and start searching for files to document inside the <code>lib</code> directory. This convention simplifies many decisions and make tools more thoughtful and friendly.</p>
+<h3 id="conventions"><a class="header" href="#conventions">Conventions</a></h3>
+<p><em>Draupnir</em> follows some basic structure for applications in <em>Odin</em>.</p>
+<h4 id="lib-directory"><a class="header" href="#lib-directory">lib/ directory</a></h4>
+<p><code>lib</code> directory holds your application source code. This directory is broken into subdirectories (<em>packages</em>). For example, the <code>lib/domain</code> directory will be responsible to host all of your business logic and business domain.</p>
+<p>It was chosen <code>lib</code> instead of <code>src</code> because the main application <code>project.odin</code> requires this directory as a “library”.</p>
+<h4 id="projectodin-file"><a class="header" href="#projectodin-file">project.odin file</a></h4>
+<p>This is a file that identifies our directory as an <em>Odin</em> project. It also contains the <code>main :: proc()</code> declaration. In <code>full</code> template is used to define common data structures such as command line arguments, logger and project.ini configurations.</p>
+<h4 id="camelcase-package-names"><a class="header" href="#camelcase-package-names">CamelCase package names</a></h4>
+<p>Package naming doesn’t need to be a mirror of your OS directories. It’s good when it can, but we don’t need to ruin their naming for the sake of the OS system.</p>
+<p>For example</p>
+<pre><code class="language-text">└── controllers
+    ├── account_controller.odin
+    ├── bread_controller.odin
+    └── user_controller.odin
+</code></pre>
+<p>Te package must be named like <code>Project_User_Controller</code>, and not <code>project_user_controller</code>. The convention for naming packages is using <code>CamelCase</code> and separate each word with underscore.</p>
+<h3 id="where-these-conventions-comes-from"><a class="header" href="#where-these-conventions-comes-from">Where these conventions comes from?</a></h3>
 <p>This convention takes inspiration and ideas from battle tested projects found in other languages and tools such as:</p>
 <ul>
 <li><a href="https://hexdocs.pm/elixir/introduction-to-mix.html#our-first-project">Elixir Mix</a>. Base idea for the “minimal template”.</li>
 <li><a href="https://hexdocs.pm/phoenix/directory_structure.html">Phoenix Framework</a>. Base idea for the “full template”.</li>
 <li><a href="https://gleam.run/writing-gleam/">Gleam</a>. Base idea for the <code>project.ini</code>.</li>
 </ul>
-<h3 id="projectodin"><a class="header" href="#projectodin">project.odin</a></h3>
-<h3 id="lib"><a class="header" href="#lib">lib/</a></h3>
-<p>A directory that holds your application source code. It’s required by the <em>Draupnir</em> template convention.</p>
+<h3 id="state-of-the-art"><a class="header" href="#state-of-the-art">State of the Art</a></h3>
+<p><em>Odin</em> ecosystem seeems to not have an standard way of file and project organization.
+Let’s analyze a bunch of <em>Odin</em> projects randomly selected:</p>
+<p><strong>Podin</strong></p>
+<p><img src="https://github.com/user-attachments/assets/a60c0d73-9694-4971-a7c7-a7194d29e62e" alt="Podin" /></p>
+<ul>
+<li>https://codeberg.org/mgavioli/podin</li>
+</ul>
+<p><strong>Odin Aseprite</strong></p>
+<p><img src="https://github.com/user-attachments/assets/6245ee77-ba81-48a9-bf0e-7ef250cf2c08" alt="Odin Aseprite" /></p>
+<ul>
+<li>https://github.com/blob1807/odin-aseprite</li>
+</ul>
+<p><strong>Odin Mimalloc</strong></p>
+<p><img src="https://github.com/user-attachments/assets/6245ee77-ba81-48a9-bf0e-7ef250cf2c08" alt="Odin Mimalloc" /></p>
+<ul>
+<li>https://github.com/jakubtomsu/odin-mimalloc</li>
+</ul>
+<p><strong>Odin HTTP</strong></p>
+<p><img src="https://github.com/user-attachments/assets/47253d01-e34c-48a9-9f7a-eec5183bd585" alt="Odin HTTP" /></p>
+<ul>
+<li>https://github.com/laytan/odin-http</li>
+</ul>
+<p>A standarization will help the creation of tools such as IDEs, documentation and other developer experience improvements, increase the speed of understanding the codebase by new people and provide a solid structure for making projects with Odin. Using conventions such as the provided by <em>Draupnir</em> will speed up the development efforts of Odin’s ecosystem.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="blank-template"><a class="header" href="#blank-template"><a href="https://github.com/odin-arsenal/draupnir/tree/main/blank-template">Blank Template</a></a></h1>
 <p>This project template only contains: <code>lib/</code>, <code>project.odin</code>, <code>.gitignore</code> and <code>README.md</code>.
 It’s the most lean possible template compatible with <em>Gungnir</em>. Besides the <code>lib</code> and <code>project.odin</code> directories
@@ -316,6 +353,31 @@ Ideal for experiments, simple applications or want to tailor the structure at wi
     ├── lib_test.odin
     └── test_helper.odin
 </code></pre>
+<h2 id="structure-and-files"><a class="header" href="#structure-and-files">Structure and Files</a></h2>
+<p>In the <code>full</code> project template you can find these files and directories. In <code>minimal</code> template just a few of them are present.</p>
+<ul>
+<li>
+<p><code>lib</code>: A directory that holds your application source code. This directory can be broken into subdirectories (packages).</p>
+</li>
+<li>
+<p><code>test</code>: Directory with all of your application tests. It often mirrors the same structure found in <code>lib</code>.</p>
+</li>
+<li>
+<p><code>run</code>: A bash script to run helper commands.</p>
+</li>
+<li>
+<p><code>_build</code>:  A directory created by the run command line tool that ships as part of <em>Draupnir</em> that holds all compilation artifacts. This directory must not be checked into version control and it can be removed at any time. Removing it will force the project to rebuild your application from scratch.</p>
+</li>
+<li>
+<p><code>bin</code>:  A directory created by the run command line tool that ships as part of <em>Draupnir</em> that holds all compilation artifacts for <em>Release</em> environment. This directory must not be checked into version control and it can be removed at any time. Removing it will force the project to rebuild your application from scratch.</p>
+</li>
+<li>
+<p><code>test/test_helper.odin</code>: A file to set variables and other global settings for the tests.</p>
+</li>
+<li>
+<p><code>test/lib_test.odin</code>: An example test file.</p>
+</li>
+</ul>
 <h2 id="run-script"><a class="header" href="#run-script">Run Script</a></h2>
 <p>The <code>full</code> and <code>minimal</code> templates provides a <a href="run"><em>./run</em></a> script to ease commands:</p>
 <ul>
@@ -329,7 +391,7 @@ Ideal for experiments, simple applications or want to tailor the structure at wi
 <li><code>./run test</code>: Run tests.</li>
 </ul>
 <h2 id="project-collection"><a class="header" href="#project-collection">Project Collection</a></h2>
-<p>The <code>full</code> and <code>minimal</code> templates provides a collection is passed down to <code>odin</code> called <code>project</code>
+<p>The <code>minimal</code> template provides a collection is passed down to <code>odin</code> called <code>project</code>
 that points to the root directory.</p>
 <p><strong>Before</strong></p>
 <pre><code class="language-odin">import "../../../config"
@@ -345,7 +407,7 @@ that can be used for special setting in different build configurations.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="full-template"><a class="header" href="#full-template"><a href="https://github.com/odin-arsenal/draupnir/tree/main/full-template">Full Template</a></a></h1>
 <p>This project template have all the bells and whistles of a complete project: Readmes, Changelogs, dependency directory, docs, private directores, and other directories and files. Normally used in complex applications and command line apps.</p>
 <h2 id="when-to-use-2"><a class="header" href="#when-to-use-2">When to Use?</a></h2>
-<p>Use this template if you want a complete project from the start. It provides a good and strong structure for big applications to grow.  It includes the <code>run</code> script that enables the <code>-collection:project=.</code> param, and can build <code>debug</code> and <code>release</code> versions of <code>project.odin</code>.</p>
+<p>Use this template if you want a complete application scaffold from the start. It provides a good and strong structure for big applications to grow. It includes the <code>run</code> script that enables the <code>-collection:project=.</code> param, and can build <code>debug</code> and <code>release</code> versions of <code>project.odin</code>.</p>
 <ul>
 <li>
 <p>Big applications.</p>
@@ -393,8 +455,8 @@ that can be used for special setting in different build configurations.</p>
 │   └── .gitkeep
 ├── lib
 │   ├── application.odin
-│   ├── core
-│   │   └── core.odin
+│   ├── domain
+│   │   └── domain.odin
 │   ├── lib.docg
 │   │   ├── Example.md
 │   │   ├── SUMMARY.md
@@ -469,11 +531,17 @@ to gather meta information about the project. Can also be used as settings that 
 <pre><code class="language-odin">settings := read_project_settings()
 context.user_ptr = &amp;settings
 </code></pre>
-<h2 id="structure-and-files"><a class="header" href="#structure-and-files">Structure and Files</a></h2>
+<h3 id="mdbook-configuration"><a class="header" href="#mdbook-configuration">mdBook configuration</a></h3>
+<p>The project comes with an <code>mdBook</code> ready directory including <code>Odin</code> highlight configuration.
+You can configure it inside <code>priv/documentation/mdbook</code> directory.</p>
+<h2 id="structure-and-files-1"><a class="header" href="#structure-and-files-1">Structure and Files</a></h2>
 <p>In the <code>full</code> project template you can find these files and directories. In <code>minimal</code> template just a few of them are present.</p>
 <ul>
 <li>
 <p><code>lib</code>: A directory that holds your application source code. This directory can be broken into subdirectories (packages).</p>
+</li>
+<li>
+<p><code>lib/domain</code>: This is the functional core of the application. Also called the “business logic” or domain of the application. Normally is a group of procedures and definitions representing the data layer, organized into packages.</p>
 </li>
 <li>
 <p><code>test</code>: Directory with all of your application tests. It often mirrors the same structure found in <code>lib</code>.</p>
@@ -593,8 +661,9 @@ when ENVIRONMENT == "test" {
 }
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="structuring-odin-projects"><a class="header" href="#structuring-odin-projects">Structuring Odin Projects</a></h1>
-<p>The rule of thumb when structuring applications, is to allow the top-level directories to directly communicate with layer below, but any communication crossing more than one line is forbidden. As an example, <code>project.odin</code> can retrieve packages in <code>lib/tasks</code>. Reaching out from <code>lib/tasks</code> to <code>project.odin</code> is - however - strictly forbidden.</p>
-<p>The rule of thumb that’s worth following is trying to keep the directory structure as flat as it is possible and manageable. You don’t really need to type more than necessary when opening/saving files - as long as there is sane number of files in a directory. There is no need to multiply subdirectories for the sake of multiplying subdirectories.</p>
+<p><em>Odin</em> is a programming language where the code is mainly organized as procedures and packages (a directory of files). However, <em>Odin</em> documentation doesn’t give a lot of advice on how to organize a project, as expected from a general-purpose language. A good project organization enable our systems to be versatile enough to cover all existing and future features, while remaining consistent. It should also allow scaling small subfeatures into larger ones. A good project structure is that it guides us to design our programs in a way to most benefit from the architecture that they run on.</p>
+<p>The rule of thumb when structuring applications, is to allow the top-level directories to directly communicate with layer below, but any communication crossing more than one line is frown upon. As an example, <code>project.odin</code> can retrieve packages in <code>lib/tasks</code>. Reaching out from <code>lib/tasks</code> to <code>project.odin</code> is - however - not good.</p>
+<p>Try to keep the directory structure as flat as it is possible and manageable. You don’t really need to type more than necessary when opening/saving files - as long as there is sane number of files in a directory. There is no need to multiply subdirectories for the sake of multiplying subdirectories.</p>
 <p>The whole idea is to have packages that work as an entry point for your app’s business. Then, all sub-entities for that aspect live there, on inner files and directories. It’s like your lib has sub-libraries. Then your sub-library has a main interface that lives on an entry point package. The main reasoning is thinking about the deletion and moving. If you want to move a package to another directory, all its files should move together. See the entry point purpose working like an index file in a web server directory, and usually, the index files live in the directory as children, not as siblings.</p>
 <pre><code class="language-text">lib/social_network
     └── authentication
@@ -603,7 +672,7 @@ when ENVIRONMENT == "test" {
             ├── facebook.odin
             └── password.odin
 </code></pre>
-<h2 id="avoid-namespacing"><a class="header" href="#avoid-namespacing">Avoid namespacing</a></h2>
+<h2 id="avoid-namespacing-use-sufixes"><a class="header" href="#avoid-namespacing-use-sufixes">Avoid namespacing, use Sufixes</a></h2>
 <p>Some kinds of files fit in one or more categories and do not belong exclusively to a common package. For example, errors, your app might have several packages that represent errors. Let’s say you have multiple errors in your app: argument, arithmetic, not found, etc. They are all errors, but they should not belong to a single “Error package”. Instead of creating a namespace, you can use a suffix. Your naming would look like this:</p>
 <ul>
 <li>package.ArgumentError</li>
@@ -612,16 +681,136 @@ when ENVIRONMENT == "test" {
 <li>package.TemporarilyUnavailableError</li>
 </ul>
 <p>So they aren’t tied anymore to the unhelpful namespacing and concept “Error”, now you’re free to move them to sub or parent applications as the time needs. As long as your project grows, these files that aren’t together conceptually might pollute your OS directories and make things hard to navigate. So it’s okay to organise your OS files and directories in a way that works better.</p>
-<h2 id="package-naming-conventions"><a class="header" href="#package-naming-conventions">Package naming conventions</a></h2>
-<p>Package naming doesn’t need to be a mirror of your OS directories. It’s good when it can, but we don’t need to ruin their naming for the sake of the OS system.</p>
-<p>For example</p>
-<pre><code class="language-text">└── controllers
-    ├── account_controller.odin
-    ├── bread_controller.odin
-    └── user_controller.odin
+<h2 id="building-a-functional-core-in-odin"><a class="header" href="#building-a-functional-core-in-odin">Building a Functional Core in Odin</a></h2>
+<p>The book <a href="https://pragprog.com/titles/jgotp/designing-elixir-systems-with-otp/">Designing Elixir Systems with OTP</a> shows the concept of “Do Fun Things with Big, Loud Worker-Bees” (a mnemonic for understanding the layers). A concept tailored to design libraries with intelligent layers that shape the right data structures, flow from one procedures into the next, and present the right APIs. It shows you how to go beyond simple programming to designing, and that means building the right layers. Embrace data structures that work best and use them to build procedures that perform and compose well, layer by layer, across packages. Test your code at the right place using the right techniques. Layer your code into pieces that are easy to understand. The objective when using these techniques is making the codebases a lot simpler.</p>
+<h3 id="functional-core-do-fun-things"><a class="header" href="#functional-core-do-fun-things">Functional Core (Do Fun Things)</a></h3>
+<p>This is the “core”, “kernel” or “domain”. Is the main business logic unit that is composed by <strong>Data</strong>, Functions and <strong>Procedures</strong> and <strong>Tests</strong>.</p>
+<h4 id="data"><a class="header" href="#data">Data</a></h4>
+<p>The idea is to rely on inmutable data structures as much as posible, so applications get much easier to maintain and algorithms get much cleaner, achieving harmony between data structures and procedures.</p>
+<h4 id="functions-and-procedures"><a class="header" href="#functions-and-procedures">Functions and Procedures</a></h4>
+<p>Procedures needs certainty and sanitized data. If you were building an application it would be more of a library. The main concept here is <strong>CRC</strong>, which means: <code>Constructors</code>, <code>Reducers</code> and <code>Converters</code>.</p>
+<ul>
+<li>
+<p><code>Constructors</code>: Are procedures that creates and sets data structures that will be pased down to <code>Reducers</code> and <code>Converters</code>. This data structure is known as the <code>accumulator</code> or <code>token</code>.</p>
+</li>
+<li>
+<p><code>Reducers</code>: These procedures take the <code>accumulator</code> and “reduce it”, applying a pipeline of different operations and procedures until it reaches a state ready for the <code>Converter</code>.</p>
+</li>
+<li>
+<p><code>Converter</code>: Takes the accumulator and “convert it” to a final format, that is ready for displaying to the user or pass it to another pipeline of <em>CRC</em>. Example would be a procedure that takes a <code>json</code> data structure and convert it to <code>string</code>, this string will be passed down to the pipeline for saving the contents to a file in disk.</p>
+</li>
+</ul>
+<p>Thanks to this form of organization, we can see our code in a coherent and unified way. By having a common data structure with several functions, we can perform operations and express ourselves with greater readability. Our systems will be easier to understand and maintain in the future.</p>
+<p>Consistency is an important quality factor in our systems and using CRC is a great tool to achieve that.</p>
+<p><strong>Example</strong></p>
+<pre><code class="language-odin">package CRC
+
+import "core:fmt"
+
+Person :: struct {
+    name : string,
+    age : int
+}
+
+// Creator
+create_person :: proc(name: string, age: int) -&gt; Person {
+    person : Person
+    person.name = name
+    person.age = age
+    return person
+}
+
+// Reducer
+// We use a new structure to avoid mutating the original parameter
+rejuvenate_person :: proc(person: Person, years: int) -&gt; Person {
+    return create_person(person.name, person.age - years)
+}
+
+// Converter, we only show the value we want to.
+print_final_age :: proc(person: Person) {
+    fmt.printfln("The person %s, now have %d years", person.name, person.age)
+}
+
+// Pipeline
+main :: proc() {
+    person := create_person("Camilo", 35)
+    person = rejuvenate_person(person, 10)
+    print_final_age(person) // The person Camilo, now have 25 years
+}
 </code></pre>
-<p>And the package is named <code>Project_User_Controller</code>, and not <code>Project_Controllers_User_Controller</code>.</p>
-<p>The convention for naming packages is using <code>CamelCase</code> and separate each word with underscore.</p>
+<p><strong>Example 2</strong></p>
+<pre><code class="language-odin">package CRC
+
+import "core:fmt"
+
+Treasure :: struct {
+    x: int,
+    y: int
+}
+
+// Constructors
+new :: proc(x: int, y: int) -&gt; Treasure {
+    treasure : Treasure
+    treasure.x = x
+    treasure.y = y
+    return treasure
+}
+
+empty :: proc() -&gt; Treasure {
+    return new(0, 0)
+}
+
+// Reducers
+north :: proc(treasure : Treasure) -&gt; Treasure {
+    return new(treasure.x, treasure.y - 1)
+}
+
+south :: proc(treasure : Treasure) -&gt; Treasure {
+    return new(treasure.x, treasure.y + 1)
+}
+
+east :: proc(treasure : Treasure) -&gt; Treasure {
+    return new(treasure.x - 1, treasure.y)
+}
+
+west :: proc(treasure : Treasure) -&gt; Treasure {
+    return new(treasure.x + 1, treasure.y)
+}
+
+// Converter
+show :: proc (treasure : Treasure) {
+    fmt.printfln("The treasure is on the coordinates (%d, %d)", treasure.x, treasure.y)
+}
+
+// Pipeline
+main :: proc() {
+    treasure := empty() // (0, 0)
+    treasure = north(treasure) // (0, -1)
+    treasure = north(treasure) // (0, -2)
+    treasure = north(treasure) // (0, -3)
+    treasure = north(treasure) // (0, -4)
+    treasure = west(treasure)  // (1, -4)
+    treasure = west(treasure)  // (2, -4)
+    treasure = west(treasure)  // (3, -4)
+    treasure = south(treasure) // (3, -3)
+    treasure = east(treasure)  // (2, -3)
+    treasure = east(treasure)  // (1, -3)
+    treasure = east(treasure)  // (0, -3)
+    show(treasure) // The treasure is on the coordinates (0, -3)
+}
+</code></pre>
+<h4 id="tests"><a class="header" href="#tests">Tests</a></h4>
+<h2 id="references"><a class="header" href="#references">References</a></h2>
+<ul>
+<li>https://goulven-clech.dev/2024/elixir-folder-structure</li>
+<li>https://www.amberbit.com/blog/2017/11/21/structuring-elixir-projects/</li>
+<li>https://redrapids.medium.com/learning-elixir-its-all-reduce-204d05f52ee7</li>
+<li>https://ulisses.dev/elixir/2022/03/04/elixir-modules-files-directories-and-naming-conventions.html</li>
+<li>https://en.wikipedia.org/wiki/Domain-driven_design</li>
+<li>https://kevinhoffman.medium.com/building-a-functional-core-in-elixir-6201ddcb4300</li>
+<li>https://elixirmerge.com/p/structured-program-design-in-elixir-with-bruce-tate</li>
+<li>https://pragprog.com/titles/jgotp/designing-elixir-systems-with-otp/</li>
+</ul>
 
                     </main>
 

@@ -182,7 +182,7 @@
                         <h1 id="full-template"><a class="header" href="#full-template"><a href="https://github.com/odin-arsenal/draupnir/tree/main/full-template">Full Template</a></a></h1>
 <p>This project template have all the bells and whistles of a complete project: Readmes, Changelogs, dependency directory, docs, private directores, and other directories and files. Normally used in complex applications and command line apps.</p>
 <h2 id="when-to-use"><a class="header" href="#when-to-use">When to Use?</a></h2>
-<p>Use this template if you want a complete project from the start. It provides a good and strong structure for big applications to grow.  It includes the <code>run</code> script that enables the <code>-collection:project=.</code> param, and can build <code>debug</code> and <code>release</code> versions of <code>project.odin</code>.</p>
+<p>Use this template if you want a complete application scaffold from the start. It provides a good and strong structure for big applications to grow. It includes the <code>run</code> script that enables the <code>-collection:project=.</code> param, and can build <code>debug</code> and <code>release</code> versions of <code>project.odin</code>.</p>
 <ul>
 <li>
 <p>Big applications.</p>
@@ -230,8 +230,8 @@
 │   └── .gitkeep
 ├── lib
 │   ├── application.odin
-│   ├── core
-│   │   └── core.odin
+│   ├── domain
+│   │   └── domain.odin
 │   ├── lib.docg
 │   │   ├── Example.md
 │   │   ├── SUMMARY.md
@@ -306,11 +306,17 @@ to gather meta information about the project. Can also be used as settings that 
 <pre><code class="language-odin">settings := read_project_settings()
 context.user_ptr = &amp;settings
 </code></pre>
+<h3 id="mdbook-configuration"><a class="header" href="#mdbook-configuration">mdBook configuration</a></h3>
+<p>The project comes with an <code>mdBook</code> ready directory including <code>Odin</code> highlight configuration.
+You can configure it inside <code>priv/documentation/mdbook</code> directory.</p>
 <h2 id="structure-and-files"><a class="header" href="#structure-and-files">Structure and Files</a></h2>
 <p>In the <code>full</code> project template you can find these files and directories. In <code>minimal</code> template just a few of them are present.</p>
 <ul>
 <li>
 <p><code>lib</code>: A directory that holds your application source code. This directory can be broken into subdirectories (packages).</p>
+</li>
+<li>
+<p><code>lib/domain</code>: This is the functional core of the application. Also called the “business logic” or domain of the application. Normally is a group of procedures and definitions representing the data layer, organized into packages.</p>
 </li>
 <li>
 <p><code>test</code>: Directory with all of your application tests. It often mirrors the same structure found in <code>lib</code>.</p>
