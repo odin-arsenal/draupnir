@@ -38,9 +38,34 @@ This is the "core", "kernel" or "domain". Is the main business logic unit that i
 
 #### Data
 
-The idea is to rely on inmutable data structures as much as posible, so applications get much easier to maintain and algorithms get much cleaner, achieving harmony between data structures and procedures.
+The idea is to rely on inmutable data structures as much as posible, so applications get much easier to maintain and algorithms get much cleaner, achieving harmony between data structures and procedures. 
 
-#### Functions and Procedures
+Odin gives developers several data structures. Structs, Maps, Enums, Strings, but also procedures that can be data too.
+Sometimes using procedures as data params can offer tremendous perfomance wins.
+
+**Example**
+
+We could store our Square with the data.
+
+```odin
+Square {
+        {5, 0}, {15, 0}
+        {15, 0}, {15, 10}
+        {15, 10}, {5, 10}
+        {5, 10}, {5, 0}
+    }
+```
+
+This way works fine, but we could also convert it to a procedure that calculates the values.
+That way we can avoid passing and coping heavy data in the params.
+
+```odin
+{{#include examples/data1/example.odin }}
+```
+
+We start with a procedure called `square`. It takes a point (x, y) and a size, and transforms that data to the same square format we saw earlier.
+
+#### Procedures
 
 Procedures needs certainty and sanitized data. If you were building an application it would be more of a library. The main concept here is **CRC**, which means: `Constructors`, `Reducers` and `Converters`.
 
@@ -56,15 +81,30 @@ Consistency is an important quality factor in our systems and using CRC is a gre
 
 **Example**
 
+_Odin_ uses packages, procedures and data types, which allows a way to organize our code in what is called CRCs (Constructors, Reducers, and Converters). So we will have procedures to (create) an accumulator, procedures that will perform operations (reducers) with this accumulator and finally procedures that will transform the accumulator into a final format (converters). This is something that has existed for a long time in different programming languages ​​such as _Haskell_ or _Lisp_. The most important thing you can do in a language is to unite ideas using composition.
+The idea is to create a pipeline that receives an accumulator as its first parameter and performs a series of reduce operations until reaching the final converter.
+
 ```odin
 {{#include examples/crc1/crc.odin}}
 ```
 
 **Example 2**
 
+Let's illustrate this a bit using a treasure map. In this map we are going to give a series of directions north, south, east and west. You can see that we have a creation function that returns a _Treasure_ struct {x, y}, which will be our accumulator data structure. Then we have a series of reducers that modify the struct and return a new struct with the appropriate values. Finally we have our converter that returns a String with a final message.
+
 ```odin
 {{#include examples/crc2/crc.odin}}
 ```
+
+We can compare these techniques with the _Object Oriented_ pattern of _Command - Query Segregation_.
+_Bertrand Meyer_ in his book [Object Oriented Software Construction](https://www.amazon.com/gp/product/0136291554/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0136291554&linkCode=as2&tag=martinfowlerc-20) - a book that is one of the most influential OOP books.
+
+The fundamental idea is that we should divide an object's methods into two sharply separated categories:
+
+- `Queries`: Return a result and do not change the observable state of the system (are free of side effects).
+- `Commands`: Change the state of a system but do not return a value.
+
+Because the term 'command' is widely used in other contexts, is preferred to refer to them as 'modifiers', 'mutators', or in this case `reducers`. The really valuable idea in this principle is that it's extremely handy if you can clearly separate methods that change state from those that don't. This is because you can use queries in many situations with much more confidence, introducing them anywhere, changing their order. You have to be more careful with modifiers.
 
 #### Tests
 
@@ -78,3 +118,4 @@ Consistency is an important quality factor in our systems and using CRC is a gre
 - https://kevinhoffman.medium.com/building-a-functional-core-in-elixir-6201ddcb4300
 - https://elixirmerge.com/p/structured-program-design-in-elixir-with-bruce-tate
 - https://pragprog.com/titles/jgotp/designing-elixir-systems-with-otp/
+- https://martinfowler.com/bliki/CommandQuerySeparation.html

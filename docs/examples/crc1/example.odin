@@ -8,7 +8,7 @@ Person :: struct {
 }
 
 // Creator
-create_person :: proc(name: string, age: int) -> Person {
+new_person :: proc(name: string, age: int) -> Person {
     person : Person
     person.name = name
     person.age = age
@@ -18,17 +18,18 @@ create_person :: proc(name: string, age: int) -> Person {
 // Reducer
 // We use a new structure to avoid mutating the original parameter
 rejuvenate_person :: proc(person: Person, years: int) -> Person {
-    return create_person(person.name, person.age - years)
+    return new_person(person.name, person.age - years)
 }
 
 // Converter, we only show the value we want to.
-print_final_age :: proc(person: Person) {
-    fmt.printfln("The person %s, now have %d years", person.name, person.age)
+person_to_string :: proc(person: Person) -> (string, string, int) {
+    return "The person %s, now have %d years", person.name, person.age
 }
 
 // Pipeline
 main :: proc() {
-    person := create_person("Camilo", 35)
+    person := new_person("Camilo", 35)
     person = rejuvenate_person(person, 10)
-    print_final_age(person) // The person Camilo, now have 25 years
+    out, name, age := person_to_string(person)
+    fmt.printfln(out, name, age) // The person Camilo, now have 25 years
 }

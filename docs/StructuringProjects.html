@@ -206,7 +206,51 @@
 <p>This is the “core”, “kernel” or “domain”. Is the main business logic unit that is composed by <strong>Data</strong>, Functions and <strong>Procedures</strong> and <strong>Tests</strong>.</p>
 <h4 id="data"><a class="header" href="#data">Data</a></h4>
 <p>The idea is to rely on inmutable data structures as much as posible, so applications get much easier to maintain and algorithms get much cleaner, achieving harmony between data structures and procedures.</p>
-<h4 id="functions-and-procedures"><a class="header" href="#functions-and-procedures">Functions and Procedures</a></h4>
+<p>Odin gives developers several data structures. Structs, Maps, Enums, Strings, but also procedures that can be data too.
+Sometimes using procedures as data params can offer tremendous perfomance wins.</p>
+<p><strong>Example</strong></p>
+<p>We could store our Square with the data.</p>
+<pre><code class="language-odin">Square {
+        {5, 0}, {15, 0}
+        {15, 0}, {15, 10}
+        {15, 10}, {5, 10}
+        {5, 10}, {5, 0}
+    }
+</code></pre>
+<p>This way works fine, but we could also convert it to a procedure that calculates the values.
+That way we can avoid passing and coping heavy data in the params.</p>
+<pre><code class="language-odin">package Data
+
+import "core:fmt"
+
+Square :: struct {
+    x1, y1, x2, y2, x3, y3, x4, y4 : [2]int
+}
+
+square :: proc (x: int, y: int, size: int) -&gt; Square {
+    return Square{
+        {x, y}, {x + size, y}, 
+        {x + size, y}, {x + size, y + size},
+        {x + size, y + size}, {x, y + size},
+        {x, y + size}, {x, y}
+    }
+}
+
+main :: proc() {
+    // We can save the procedure in a variable
+    // Or pass the procedure as a param in another procedure
+    // This is passing the pointer
+    my_procedure_pointer := square
+
+    // Square{x1 = [5, 0], y1 = [15, 0], 
+    // x2 = [15, 0], y2 = [15, 10], 
+    // x3 = [15, 10], y3 = [5, 10], 
+    // x4 = [5, 10], y4 = [5, 0]}
+    fmt.printf("%v", my_procedure_pointer(5, 0, 10))
+}
+</code></pre>
+<p>We start with a procedure called <code>square</code>. It takes a point (x, y) and a size, and transforms that data to the same square format we saw earlier.</p>
+<h4 id="procedures"><a class="header" href="#procedures">Procedures</a></h4>
 <p>Procedures needs certainty and sanitized data. If you were building an application it would be more of a library. The main concept here is <strong>CRC</strong>, which means: <code>Constructors</code>, <code>Reducers</code> and <code>Converters</code>.</p>
 <ul>
 <li>
@@ -222,102 +266,22 @@
 <p>Thanks to this form of organization, we can see our code in a coherent and unified way. By having a common data structure with several functions, we can perform operations and express ourselves with greater readability. Our systems will be easier to understand and maintain in the future.</p>
 <p>Consistency is an important quality factor in our systems and using CRC is a great tool to achieve that.</p>
 <p><strong>Example</strong></p>
-<pre><code class="language-odin">package CRC
-
-import "core:fmt"
-
-Person :: struct {
-    name : string,
-    age : int
-}
-
-// Creator
-create_person :: proc(name: string, age: int) -&gt; Person {
-    person : Person
-    person.name = name
-    person.age = age
-    return person
-}
-
-// Reducer
-// We use a new structure to avoid mutating the original parameter
-rejuvenate_person :: proc(person: Person, years: int) -&gt; Person {
-    return create_person(person.name, person.age - years)
-}
-
-// Converter, we only show the value we want to.
-print_final_age :: proc(person: Person) {
-    fmt.printfln("The person %s, now have %d years", person.name, person.age)
-}
-
-// Pipeline
-main :: proc() {
-    person := create_person("Camilo", 35)
-    person = rejuvenate_person(person, 10)
-    print_final_age(person) // The person Camilo, now have 25 years
-}
+<p><em>Odin</em> uses packages, procedures and data types, which allows a way to organize our code in what is called CRCs (Constructors, Reducers, and Converters). So we will have procedures to (create) an accumulator, procedures that will perform operations (reducers) with this accumulator and finally procedures that will transform the accumulator into a final format (converters). This is something that has existed for a long time in different programming languages ​​such as <em>Haskell</em> or <em>Lisp</em>. The most important thing you can do in a language is to unite ideas using composition.
+The idea is to create a pipeline that receives an accumulator as its first parameter and performs a series of reduce operations until reaching the final converter.</p>
+<pre><code class="language-odin">{{#include examples/crc1/crc.odin}}
 </code></pre>
 <p><strong>Example 2</strong></p>
-<pre><code class="language-odin">package CRC
-
-import "core:fmt"
-
-Treasure :: struct {
-    x: int,
-    y: int
-}
-
-// Constructors
-new :: proc(x: int, y: int) -&gt; Treasure {
-    treasure : Treasure
-    treasure.x = x
-    treasure.y = y
-    return treasure
-}
-
-empty :: proc() -&gt; Treasure {
-    return new(0, 0)
-}
-
-// Reducers
-north :: proc(treasure : Treasure) -&gt; Treasure {
-    return new(treasure.x, treasure.y - 1)
-}
-
-south :: proc(treasure : Treasure) -&gt; Treasure {
-    return new(treasure.x, treasure.y + 1)
-}
-
-east :: proc(treasure : Treasure) -&gt; Treasure {
-    return new(treasure.x - 1, treasure.y)
-}
-
-west :: proc(treasure : Treasure) -&gt; Treasure {
-    return new(treasure.x + 1, treasure.y)
-}
-
-// Converter
-show :: proc (treasure : Treasure) {
-    fmt.printfln("The treasure is on the coordinates (%d, %d)", treasure.x, treasure.y)
-}
-
-// Pipeline
-main :: proc() {
-    treasure := empty() // (0, 0)
-    treasure = north(treasure) // (0, -1)
-    treasure = north(treasure) // (0, -2)
-    treasure = north(treasure) // (0, -3)
-    treasure = north(treasure) // (0, -4)
-    treasure = west(treasure)  // (1, -4)
-    treasure = west(treasure)  // (2, -4)
-    treasure = west(treasure)  // (3, -4)
-    treasure = south(treasure) // (3, -3)
-    treasure = east(treasure)  // (2, -3)
-    treasure = east(treasure)  // (1, -3)
-    treasure = east(treasure)  // (0, -3)
-    show(treasure) // The treasure is on the coordinates (0, -3)
-}
+<p>Let’s illustrate this a bit using a treasure map. In this map we are going to give a series of directions north, south, east and west. You can see that we have a creation function that returns a <em>Treasure</em> struct {x, y}, which will be our accumulator data structure. Then we have a series of reducers that modify the struct and return a new struct with the appropriate values. Finally we have our converter that returns a String with a final message.</p>
+<pre><code class="language-odin">{{#include examples/crc2/crc.odin}}
 </code></pre>
+<p>We can compare these techniques with the <em>Object Oriented</em> pattern of <em>Command - Query Segregation</em>.
+<em>Bertrand Meyer</em> in his book <a href="https://www.amazon.com/gp/product/0136291554/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0136291554&amp;linkCode=as2&amp;tag=martinfowlerc-20">Object Oriented Software Construction</a> - a book that is one of the most influential OOP books.</p>
+<p>The fundamental idea is that we should divide an object’s methods into two sharply separated categories:</p>
+<ul>
+<li><code>Queries</code>: Return a result and do not change the observable state of the system (are free of side effects).</li>
+<li><code>Commands</code>: Change the state of a system but do not return a value.</li>
+</ul>
+<p>Because the term ‘command’ is widely used in other contexts, is preferred to refer to them as ‘modifiers’, ‘mutators’, or in this case <code>reducers</code>. The really valuable idea in this principle is that it’s extremely handy if you can clearly separate methods that change state from those that don’t. This is because you can use queries in many situations with much more confidence, introducing them anywhere, changing their order. You have to be more careful with modifiers.</p>
 <h4 id="tests"><a class="header" href="#tests">Tests</a></h4>
 <h2 id="references"><a class="header" href="#references">References</a></h2>
 <ul>
@@ -329,6 +293,7 @@ main :: proc() {
 <li>https://kevinhoffman.medium.com/building-a-functional-core-in-elixir-6201ddcb4300</li>
 <li>https://elixirmerge.com/p/structured-program-design-in-elixir-with-bruce-tate</li>
 <li>https://pragprog.com/titles/jgotp/designing-elixir-systems-with-otp/</li>
+<li>https://martinfowler.com/bliki/CommandQuerySeparation.html</li>
 </ul>
 
                     </main>

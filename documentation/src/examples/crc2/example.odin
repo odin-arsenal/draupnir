@@ -37,8 +37,8 @@ west :: proc(treasure : Treasure) -> Treasure {
 }
 
 // Converter
-show :: proc (treasure : Treasure) {
-    fmt.printfln("The treasure is on the coordinates (%d, %d)", treasure.x, treasure.y)
+show :: proc (treasure : Treasure) -> (string, int, int) {
+    return "The treasure is on the coordinates (%d, %d)", treasure.x, treasure.y
 }
 
 // Pipeline
@@ -55,5 +55,6 @@ main :: proc() {
     treasure = east(treasure)  // (2, -3)
     treasure = east(treasure)  // (1, -3)
     treasure = east(treasure)  // (0, -3)
-    show(treasure) // The treasure is on the coordinates (0, -3)
+    out, x, y := show(treasure)
+    fmt.printfln(out, x, y) // The treasure is on the coordinates (0, -3)
 }
