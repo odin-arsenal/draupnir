@@ -91,7 +91,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Draupnir Templates</li><li class="chapter-item expanded "><a href="About.html"><strong aria-hidden="true">1.</strong> About</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="License.html"><strong aria-hidden="true">1.1.</strong> License</a></li><li class="chapter-item expanded "><a href="Credits.html"><strong aria-hidden="true">1.2.</strong> Credits</a></li></ol></li><li class="chapter-item expanded "><a href="Conventions.html"><strong aria-hidden="true">2.</strong> Why adopt Draupnir Conventions?</a></li><li class="chapter-item expanded affix "><li class="part-title">Templates</li><li class="chapter-item expanded "><a href="BlankTemplate.html"><strong aria-hidden="true">3.</strong> Blank Template</a></li><li class="chapter-item expanded "><a href="MinimalTemplate.html"><strong aria-hidden="true">4.</strong> Minimal Template</a></li><li class="chapter-item expanded "><a href="FullTemplate.html"><strong aria-hidden="true">5.</strong> Full Template</a></li><li class="chapter-item expanded affix "><li class="part-title">Articles</li><li class="chapter-item expanded "><a href="StructuringProjects.html" class="active"><strong aria-hidden="true">6.</strong> Structuring Odin Projects</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Draupnir Templates</li><li class="chapter-item expanded "><a href="About.html"><strong aria-hidden="true">1.</strong> About</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="License.html"><strong aria-hidden="true">1.1.</strong> License</a></li><li class="chapter-item expanded "><a href="Credits.html"><strong aria-hidden="true">1.2.</strong> Credits</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Templates</li><li class="chapter-item expanded "><a href="BlankTemplate.html"><strong aria-hidden="true">2.</strong> Blank Template</a></li><li class="chapter-item expanded "><a href="MinimalTemplate.html"><strong aria-hidden="true">3.</strong> Minimal Template</a></li><li class="chapter-item expanded "><a href="FullTemplate.html"><strong aria-hidden="true">4.</strong> Full Template</a></li><li class="chapter-item expanded affix "><li class="part-title">Articles</li><li class="chapter-item expanded "><a href="Conventions.html"><strong aria-hidden="true">5.</strong> Why adopt Draupnir Conventions?</a></li><li class="chapter-item expanded "><a href="StructuringProjects.html" class="active"><strong aria-hidden="true">6.</strong> Structuring Odin Projects</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -368,32 +368,56 @@ main :: proc() {
 }
 </code></pre>
 <p>We can compare these techniques with the <em>Object Oriented</em> pattern of <em>Command - Query Segregation</em>.
-<em>Bertrand Meyer</em> in his book <a href="https://www.amazon.com/gp/product/0136291554/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0136291554&amp;linkCode=as2&amp;tag=martinfowlerc-20">Object Oriented Software Construction</a> - a book that is one of the most influential OOP books.</p>
+<em>Bertrand Meyer</em> in his book <a href="https://www.amazon.com/gp/product/0136291554/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0136291554&amp;linkCode=as2&amp;tag=martinfowlerc-20">Object Oriented Software Construction</a>.</p>
 <p>The fundamental idea is that we should divide an object’s methods into two sharply separated categories:</p>
 <ul>
 <li><code>Queries</code>: Return a result and do not change the observable state of the system (are free of side effects).</li>
 <li><code>Commands</code>: Change the state of a system but do not return a value.</li>
 </ul>
 <p>Because the term ‘command’ is widely used in other contexts, is preferred to refer to them as ‘modifiers’, ‘mutators’, or in this case <code>reducers</code>. The really valuable idea in this principle is that it’s extremely handy if you can clearly separate methods that change state from those that don’t. This is because you can use queries in many situations with much more confidence, introducing them anywhere, changing their order. You have to be more careful with modifiers.</p>
+<p><strong>Example 3</strong></p>
+<p>User <a href="https://discord.com/channels/568138951836172421/939893971302375534/1304423829543845999">@thetarnav</a> points
+that this can be achieved like the following code too.</p>
+<pre><code class="language-odin">Treasure :: [2]int
+
+NORTH :: Treasure{ 0, -1}
+SOUTH :: Treasure{ 0, +1}
+EAST  :: Treasure{-1,  0}
+WEST  :: Treasure{+1,  0}
+
+treasure := \
+    NORTH + // (0, -1)
+    NORTH + // (0, -2)
+    NORTH + // (0, -3)
+    NORTH + // (0, -4)
+    WEST +  // (1, -4)
+    WEST +  // (2, -4)
+    WEST +  // (3, -4)
+    SOUTH + // (3, -3)
+    EAST +  // (2, -3)
+    EAST +  // (1, -3)
+    EAST    // (0, -3)
+</code></pre>
+<p>Nevertheless is an interesting way of approaching system organization. This is using <a href="https://odin-lang.org/docs/overview/#array-programming"><em>Array programming</em></a> techniques where basic operations (+, -, *, etc.) on two fixed-size arrays of the same length are done element-wise. One of the goodies of <em>Odin</em>.</p>
 <h4 id="tests"><a class="header" href="#tests">Tests</a></h4>
 <h2 id="references"><a class="header" href="#references">References</a></h2>
 <ul>
-<li>https://goulven-clech.dev/2024/elixir-folder-structure</li>
-<li>https://www.amberbit.com/blog/2017/11/21/structuring-elixir-projects/</li>
-<li>https://redrapids.medium.com/learning-elixir-its-all-reduce-204d05f52ee7</li>
-<li>https://ulisses.dev/elixir/2022/03/04/elixir-modules-files-directories-and-naming-conventions.html</li>
-<li>https://en.wikipedia.org/wiki/Domain-driven_design</li>
-<li>https://kevinhoffman.medium.com/building-a-functional-core-in-elixir-6201ddcb4300</li>
-<li>https://elixirmerge.com/p/structured-program-design-in-elixir-with-bruce-tate</li>
-<li>https://pragprog.com/titles/jgotp/designing-elixir-systems-with-otp/</li>
-<li>https://martinfowler.com/bliki/CommandQuerySeparation.html</li>
+<li><a href="https://goulven-clech.dev/2024/elixir-folder-structure">https://goulven-clech.dev/2024/elixir-folder-structure</a></li>
+<li><a href="https://www.amberbit.com/blog/2017/11/21/structuring-elixir-projects/">https://www.amberbit.com/blog/2017/11/21/structuring-elixir-projects/</a></li>
+<li><a href="https://redrapids.medium.com/learning-elixir-its-all-reduce-204d05f52ee7">https://redrapids.medium.com/learning-elixir-its-all-reduce-204d05f52ee7</a></li>
+<li><a href="https://ulisses.dev/elixir/2022/03/04/elixir-modules-files-directories-and-naming-conventions.html">https://ulisses.dev/elixir/2022/03/04/elixir-modules-files-directories-and-naming-conventions.html</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Domain-driven_design">https://en.wikipedia.org/wiki/Domain-driven_design</a></li>
+<li><a href="https://kevinhoffman.medium.com/building-a-functional-core-in-elixir-6201ddcb4300">https://kevinhoffman.medium.com/building-a-functional-core-in-elixir-6201ddcb4300</a></li>
+<li><a href="https://elixirmerge.com/p/structured-program-design-in-elixir-with-bruce-tate">https://elixirmerge.com/p/structured-program-design-in-elixir-with-bruce-tate</a></li>
+<li><a href="https://pragprog.com/titles/jgotp/designing-elixir-systems-with-otp/">https://pragprog.com/titles/jgotp/designing-elixir-systems-with-otp/</a></li>
+<li><a href="https://martinfowler.com/bliki/CommandQuerySeparation.html">https://martinfowler.com/bliki/CommandQuerySeparation.html</a></li>
 </ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="FullTemplate.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="Conventions.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
@@ -404,7 +428,7 @@ main :: proc() {
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="FullTemplate.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="Conventions.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 

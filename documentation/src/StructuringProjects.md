@@ -97,7 +97,7 @@ Let's illustrate this a bit using a treasure map. In this map we are going to gi
 ```
 
 We can compare these techniques with the _Object Oriented_ pattern of _Command - Query Segregation_.
-_Bertrand Meyer_ in his book [Object Oriented Software Construction](https://www.amazon.com/gp/product/0136291554/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0136291554&linkCode=as2&tag=martinfowlerc-20) - a book that is one of the most influential OOP books.
+_Bertrand Meyer_ in his book [Object Oriented Software Construction](https://www.amazon.com/gp/product/0136291554/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0136291554&linkCode=as2&tag=martinfowlerc-20).
 
 The fundamental idea is that we should divide an object's methods into two sharply separated categories:
 
@@ -106,16 +106,45 @@ The fundamental idea is that we should divide an object's methods into two sharp
 
 Because the term 'command' is widely used in other contexts, is preferred to refer to them as 'modifiers', 'mutators', or in this case `reducers`. The really valuable idea in this principle is that it's extremely handy if you can clearly separate methods that change state from those that don't. This is because you can use queries in many situations with much more confidence, introducing them anywhere, changing their order. You have to be more careful with modifiers.
 
+**Example 3**
+
+User [@thetarnav](https://discord.com/channels/568138951836172421/939893971302375534/1304423829543845999) points
+that this can be achieved like the following code too.
+
+```odin
+Treasure :: [2]int
+
+NORTH :: Treasure{ 0, -1}
+SOUTH :: Treasure{ 0, +1}
+EAST  :: Treasure{-1,  0}
+WEST  :: Treasure{+1,  0}
+
+treasure := \
+    NORTH + // (0, -1)
+    NORTH + // (0, -2)
+    NORTH + // (0, -3)
+    NORTH + // (0, -4)
+    WEST +  // (1, -4)
+    WEST +  // (2, -4)
+    WEST +  // (3, -4)
+    SOUTH + // (3, -3)
+    EAST +  // (2, -3)
+    EAST +  // (1, -3)
+    EAST    // (0, -3)
+```
+
+Nevertheless is an interesting way of approaching system organization. This is using [_Array programming_](https://odin-lang.org/docs/overview/#array-programming) techniques where basic operations (+, -, *, etc.) on two fixed-size arrays of the same length are done element-wise. One of the goodies of _Odin_.
+
 #### Tests
 
 ## References
 
-- https://goulven-clech.dev/2024/elixir-folder-structure
-- https://www.amberbit.com/blog/2017/11/21/structuring-elixir-projects/
-- https://redrapids.medium.com/learning-elixir-its-all-reduce-204d05f52ee7
-- https://ulisses.dev/elixir/2022/03/04/elixir-modules-files-directories-and-naming-conventions.html
-- https://en.wikipedia.org/wiki/Domain-driven_design
-- https://kevinhoffman.medium.com/building-a-functional-core-in-elixir-6201ddcb4300
-- https://elixirmerge.com/p/structured-program-design-in-elixir-with-bruce-tate
-- https://pragprog.com/titles/jgotp/designing-elixir-systems-with-otp/
-- https://martinfowler.com/bliki/CommandQuerySeparation.html
+- [https://goulven-clech.dev/2024/elixir-folder-structure](https://goulven-clech.dev/2024/elixir-folder-structure)
+- [https://www.amberbit.com/blog/2017/11/21/structuring-elixir-projects/](https://www.amberbit.com/blog/2017/11/21/structuring-elixir-projects/)
+- [https://redrapids.medium.com/learning-elixir-its-all-reduce-204d05f52ee7](https://redrapids.medium.com/learning-elixir-its-all-reduce-204d05f52ee7)
+- [https://ulisses.dev/elixir/2022/03/04/elixir-modules-files-directories-and-naming-conventions.html](https://ulisses.dev/elixir/2022/03/04/elixir-modules-files-directories-and-naming-conventions.html)
+- [https://en.wikipedia.org/wiki/Domain-driven_design](https://en.wikipedia.org/wiki/Domain-driven_design)
+- [https://kevinhoffman.medium.com/building-a-functional-core-in-elixir-6201ddcb4300](https://kevinhoffman.medium.com/building-a-functional-core-in-elixir-6201ddcb4300)
+- [https://elixirmerge.com/p/structured-program-design-in-elixir-with-bruce-tate](https://elixirmerge.com/p/structured-program-design-in-elixir-with-bruce-tate)
+- [https://pragprog.com/titles/jgotp/designing-elixir-systems-with-otp/](https://pragprog.com/titles/jgotp/designing-elixir-systems-with-otp/)
+- [https://martinfowler.com/bliki/CommandQuerySeparation.html](https://martinfowler.com/bliki/CommandQuerySeparation.html)
