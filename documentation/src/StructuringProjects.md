@@ -137,6 +137,12 @@ Nevertheless is an interesting way of approaching system organization. This is u
 
 #### Tests
 
+With proper structure of your projects testing will be much simpler. It will be possible to represent testing concepts in any way you need.
+
+### Final Thoughts
+
+The internal building blocks of any project can be dividen in datatypes, procedures and tests. The datatypes guide the structure of components and interactions between procedures. Those procedures are divided along the obvious lines of purpose (CRC). And by separating the project in layers we can use tests to verify what we've done, using conventional techniques to test the core and other layers.
+
 ## References
 
 - [https://goulven-clech.dev/2024/elixir-folder-structure](https://goulven-clech.dev/2024/elixir-folder-structure)

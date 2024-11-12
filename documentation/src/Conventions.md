@@ -16,7 +16,13 @@ It was chosen `lib` instead of `src` because the main application `project.odin`
 
 This is a file that identifies our directory as an _Odin_ project. It also contains the `main :: proc()` declaration. In `full` template is used to define common data structures such as command line arguments, logger and project.ini configurations.
 
-#### CamelCase package names
+**Execute project.odin**
+
+```shell
+$ odin run .
+```
+
+#### Ada_Case package names
 
 Package naming doesn’t need to be a mirror of your OS directories. It’s good when it can, but we don’t need to ruin their naming for the sake of the OS system.
 
@@ -29,7 +35,19 @@ For example
     └── user_controller.odin
 ```
 
-Te package must be named like `Project_User_Controller`, and not `project_user_controller`. The convention for naming packages is using `CamelCase` and separate each word with underscore.
+Te package must be named like `Project_User_Controller`, and not `project_user_controller`. The convention for naming packages is using [`Ada_Case`](https://ada-lang.io/docs/style-guide/s3/02/).
+
+Is recommended to use a project prefix for package names. For example if my project is named `Drawings` the package names could be `Drawings_Circle` and `Drawings_Triangle`, even though the packages could be in deep hierarchy.
+
+```go
+package Drawings
+
+main :: proc() {}
+```
+
+#### Package directories
+
+Package directories can be `lowercase` or `PascalCase`. The only exception is the `project.odin` level directories that always must be lowercase. `PascalCase` is recommended when the package could conflict with a built in package. For example `string`, a package with the name `String` would not conflict. Is left to the developer the convention used, but they must be consistent in the whole project.
 
 ### Where these conventions comes from?
 

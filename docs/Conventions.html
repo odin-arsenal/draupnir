@@ -188,7 +188,10 @@
 <p>It was chosen <code>lib</code> instead of <code>src</code> because the main application <code>project.odin</code> requires this directory as a “library”.</p>
 <h4 id="projectodin-file"><a class="header" href="#projectodin-file">project.odin file</a></h4>
 <p>This is a file that identifies our directory as an <em>Odin</em> project. It also contains the <code>main :: proc()</code> declaration. In <code>full</code> template is used to define common data structures such as command line arguments, logger and project.ini configurations.</p>
-<h4 id="camelcase-package-names"><a class="header" href="#camelcase-package-names">CamelCase package names</a></h4>
+<p><strong>Execute project.odin</strong></p>
+<pre><code class="language-shell">$ odin run .
+</code></pre>
+<h4 id="ada_case-package-names"><a class="header" href="#ada_case-package-names">Ada_Case package names</a></h4>
 <p>Package naming doesn’t need to be a mirror of your OS directories. It’s good when it can, but we don’t need to ruin their naming for the sake of the OS system.</p>
 <p>For example</p>
 <pre><code class="language-text">└── controllers
@@ -196,7 +199,14 @@
     ├── bread_controller.odin
     └── user_controller.odin
 </code></pre>
-<p>Te package must be named like <code>Project_User_Controller</code>, and not <code>project_user_controller</code>. The convention for naming packages is using <code>CamelCase</code> and separate each word with underscore.</p>
+<p>Te package must be named like <code>Project_User_Controller</code>, and not <code>project_user_controller</code>. The convention for naming packages is using <a href="https://ada-lang.io/docs/style-guide/s3/02/"><code>Ada_Case</code></a>.</p>
+<p>Is recommended to use a project prefix for package names. For example if my project is named <code>Drawings</code> the package names could be <code>Drawings_Circle</code> and <code>Drawings_Triangle</code>, even though the packages could be in deep hierarchy.</p>
+<pre><code class="language-go">package Drawings
+
+main :: proc() {}
+</code></pre>
+<h4 id="package-directories"><a class="header" href="#package-directories">Package directories</a></h4>
+<p>Package directories can be <code>lowercase</code> or <code>PascalCase</code>. The only exception is the <code>project.odin</code> level directories that always must be lowercase. <code>PascalCase</code> is recommended when the package could conflict with a built in package. For example <code>string</code>, a package with the name <code>String</code> would not conflict. Is left to the developer the convention used, but they must be consistent in the whole project.</p>
 <h3 id="where-these-conventions-comes-from"><a class="header" href="#where-these-conventions-comes-from">Where these conventions comes from?</a></h3>
 <p>This convention takes inspiration and ideas from battle tested projects found in other languages and tools such as:</p>
 <ul>
