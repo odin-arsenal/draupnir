@@ -1,4 +1,4 @@
-package Tasks_Options
+package Project_Tasks_Options
 
 // Defines the available command line options
 Options :: struct {
