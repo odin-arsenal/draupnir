@@ -45,7 +45,7 @@ function build.release {
 	mkdir -p bin
 	odin strip-semicolon . $@ ${COLLECTIONS}
 	odin check . $@ ${COLLECTIONS}
-	odin build . -define:env=prod -warnings-as-errors -strict-style -out:bin/project ${COLLECTIONS}
+	odin build . -define:env=prod -warnings-as-errors -vet -strict-style -out:bin/project ${COLLECTIONS}
 }
 
 # Runs the project binary
@@ -56,7 +56,7 @@ function project {
 	_build/project $@
 }
 
-function project.release {
+function release {
 	# This file helps executing the project.odin
 	# Run ./run build.release before executing this
 	# ./run project.release args
